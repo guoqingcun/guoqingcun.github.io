@@ -1,0 +1,84 @@
+在清单 3 的 writeObject 方法中，对密码进行了加密，在 readObject 中则对 password 进行解密，只有拥有密钥的客户端，才可以正确的解析出密码，确保了数据的安全。执行清单 3 后控制台输出如图 3 所示。
+
+图 3. 数据加密演示
+
+![美丽花儿](/images/java/base/serial/image007.gif "美丽花儿")
+
+**特性使用案例**
+
+RMI 技术是完全基于 Java 序列化技术的，服务器端接口调用所需要的参数对象来至于客户端，它们通过网络相互传输。这就涉及 RMI 的安全传输的问题。一些敏感的字段，如用户名密码（用户登录时需要对密码进行传输），我们希望对其进行加密，这时，就可以采用本节介绍的方法在客户端对密码进行加密，服务器端进行解密，确保数据传输的安全性。
+
+# 序列化存储规则
+
+**情境：** 问题代码如清单 4 所示。
+
+清单 4. 存储规则问题代码
+
+<pre><code>
+   ObjectOutputStream out = new ObjectOutputStream(
+                   new FileOutputStream("result.obj"));
+   Test test = new Test();
+   //试图将对象两次写入文件
+   out.writeObject(test);
+   out.flush();
+   System.out.println(new File("result.obj").length());
+   out.writeObject(test);
+   out.close();
+   System.out.println(new File("result.obj").length());
+ 
+   ObjectInputStream oin = new ObjectInputStream(new FileInputStream(
+           "result.obj"));
+   //从文件依次读出两个文件
+   Test t1 = (Test) oin.readObject();
+   Test t2 = (Test) oin.readObject();
+   oin.close();
+            
+   //判断两个引用是否指向同一个对象
+   System.out.println(t1 == t2);
+</code></pre>
+
+
+清单 3 中对同一对象两次写入文件，打印出写入一次对象后的存储大小和写入两次后的存储大小，然后从文件中反序列化出两个对象，比较这两个对象是否为同一对象。一般的思维是，两次写入对象，文件大小会变为两倍的大小，反序列化时，由于从文件读取，生成了两个对象，判断相等时应该是输入 false 才对，但是最后结果输出如图 4 所示。
+
+图 4. 示例程序输出
+
+![美丽花儿](/images/java/base/serial/image009.gif "美丽花儿")
+
+我们看到，第二次写入对象时文件只增加了 5 字节，并且两个对象是相等的，这是为什么呢？
+
+**解答：** Java 序列化机制为了节省磁盘空间，具有特定的存储规则，当写入文件的为同一对象时，并不会再将对象的内容进行存储，而只是再次存储一份引用，上面增加的 5 字节的存储空间就是新增引用和一些控制信息的空间。反序列化时，恢复引用关系，使得清单 3 中的 t1 和 t2 指向唯一的对象，二者相等，输出 true。该存储规则极大的节省了存储空间。
+
+**特性案例分析**
+
+查看清单 5 的代码。
+
+清单 5. 案例代码
+
+<pre><code>
+    ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("result.obj"));
+    Test test = new Test();
+    test.i = 1;
+    out.writeObject(test);
+    out.flush();
+    test.i = 2;
+    out.writeObject(test);
+    out.close();
+    ObjectInputStream oin = new ObjectInputStream(new FileInputStream(
+    					"result.obj"));
+    Test t1 = (Test) oin.readObject();
+    Test t2 = (Test) oin.readObject();
+    System.out.println(t1.i);
+    System.out.println(t2.i);
+</code></pre>
+
+
+
+清单 4 的目的是希望将 test 对象两次保存到 result.obj 文件中，写入一次以后修改对象属性值再次保存第二次，然后从 result.obj 中再依次读出两个对象，输出这两个对象的 i 属性值。案例代码的目的原本是希望一次性传输对象修改前后的状态。
+
+结果两个输出的都是 1， 原因就是第一次写入对象以后，第二次再试图写的时候，虚拟机根据引用关系知道已经有一个相同对象已经写入文件，因此只保存第二次写的引用，所以读取时，都是第一次保存的对象。读者在使用一个文件多次 writeObject 需要特别注意这个问题。
+
+# 小结
+
+本文通过几个具体的情景，介绍了 Java 序列化的一些高级知识，虽说高级，并不是说读者们都不了解，希望用笔者介绍的情景让读者加深印象，能够更加合理的利用 Java 序列化技术，在未来开发之路上遇到序列化问题时，可以及时的解决。由于本人知识水平有限，文章中倘若有错误的地方，欢迎联系我批评指正。
+
+源文：https://www.ibm.com/developerworks/cn/java/j-lo-serial/
