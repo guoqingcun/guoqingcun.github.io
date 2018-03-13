@@ -1,294 +1,356 @@
 ---
 layout: post
-title:  "Java 序列化的高级认识"
-date:   2018-03-12 17:19:17 +0800
+title:  "Java 对象序列化"
+date:   2018-03-13 13:43:17 +0800
 categories: Java
 location: 
 description: 
 ---
 ---
 
-# 引言
+# Java 序列化简介
+
+Java 对象序列化是 JDK 1.1 中引入的一组开创性特性之一，用于作为一种将 Java 对象的状态转换为字节数组，以便存储或传输的机制，以后，仍可以将字节数组转换回 Java 对象原有的状态。
+
+实际上，序列化的思想是 “冻结” 对象状态，传输对象状态（写到磁盘、通过网络传输等等），然后 “解冻” 状态，重新获得可用的 Java 对象。所有这些事情的发生有点像是魔术，这要归功于 ObjectInputStream/ObjectOutputStream 类、完全保真的元数据以及程序员愿意用 Serializable 标识接口标记他们的类，从而 “参与” 这个过程。
+
+清单 1 显示一个实现 Serializable 的 Person 类。
 
 
-将 Java 对象序列化为二进制文件的 Java 序列化技术是 Java 系列技术中一个较为重要的技术点，在大部分情况下，开发人员只需要了解被序列化的类需要实现 Serializable 接口，使用 ObjectInputStream 和 ObjectOutputStream 进行对象的读写。然而在有些情况下，光知道这些还远远不够，文章列举了笔者遇到的一些真实情境，它们与 Java 序列化相关，通过分析情境出现的原因，使读者轻松牢记 Java 序列化中的一些高级认识。
-
-
-# 文章结构
-
-本文将逐一的介绍几个情境，顺序如下面的列表。
-
-- 序列化 ID 的问题
-- 静态变量序列化
-- 父类的序列化与 Transient 关键字
-- 对敏感字段加密
-- 序列化存储规则
-
-
-列表的每一部分讲述了一个单独的情境，读者可以分别查看。
-
-# 序列化 ID 问题
-
-**情境：** 两个客户端 A 和 B 试图通过网络传递对象数据，A 端将对象 C 序列化为二进制数据再传给 B，B 反序列化得到 C。
-
-**问题：**　C 对象的全类路径假设为 com.inout.Test，在 A 和 B 端都有这么一个类文件，功能代码完全一致。也都实现了 Serializable 接口，但是反序列化时总是提示不成功。
-
-**解决：虚拟机是否允许反序列化，不仅取决于类路径和功能代码是否一致，一个非常重要的一点是两个类的序列化 ID 是否一致（就是 private static final long serialVersionUID = 1L）。** 清单 1 中，虽然两个类的功能代码完全一致，但是序列化 ID 不同，他们无法相互序列化和反序列化。
-
-清单 1. 相同功能代码不同序列化 ID 的类对比
+清单 1. Serializable Person
 
 {% highlight java linenos %}
-    package com.inout;	
-    import java.io.Serializable; 	 
-    public class A implements Serializable {  
-        private static final long serialVersionUID = 1L;  
-        private String name;     
-        public String getName() 
-        { 
-            return name; 
-        }     
-        public void setName(String name) 
-        { 
-            this.name = name; 
-        } 
-    } 
+    package com.tedneward; 
+    public class Person
+        implements java.io.Serializable
+    {
+        public Person(String fn, String ln, int a)
+        {
+            this.firstName = fn; this.lastName = ln; this.age = a;
+        }
      
-    package com.inout;  
-    import java.io.Serializable;  
-    public class A implements Serializable {  
-        private static final long serialVersionUID = 2L;     
-        private String name;     
-        public String getName() 
-        { 
-            return name; 
-        } 		    
-        public void setName(String name) 
-        { 
-            this.name = name; 
-        } 
+        public String getFirstName() { return firstName; }
+        public String getLastName() { return lastName; }
+        public int getAge() { return age; }
+        public Person getSpouse() { return spouse; }
+     
+        public void setFirstName(String value) { firstName = value; }
+        public void setLastName(String value) { lastName = value; }
+        public void setAge(int value) { age = value; }
+        public void setSpouse(Person value) { spouse = value; }
+     
+        public String toString()
+        {
+            return "[Person: firstName=" + firstName + 
+                " lastName=" + lastName +
+                " age=" + age +
+                " spouse=" + spouse.getFirstName() +
+                "]";
+        }    
+     
+        private String firstName;
+        private String lastName;
+        private int age;
+        private Person spouse;
+     
     }
 {% endhighlight %}
-序列化 ID 在 Eclipse 下提供了两种生成策略，一个是固定的 1L，一个是随机生成一个不重复的 long 类型数据（实际上是使用 JDK 工具生成），在这里有一个建议，如果没有特殊需求，就是用默认的 1L 就可以，这样可以确保代码一致时反序列化成功。那么随机生成的序列化 ID 有什么作用呢，有些时候，通过改变序列化 ID 可以用来限制某些用户的使用。
 
-**特性使用案例**
+将 Person 序列化后，很容易将对象状态写到磁盘，然后重新读出它，下面的 JUnit 4 单元测试对此做了演示。
 
-读者应该听过 Façade 模式，它是为应用程序提供统一的访问接口，案例程序中的 Client 客户端使用了该模式，案例程序结构图如图 1 所示。
+清单 2. 对 Person 进行反序列化
 
-图 1. 案例程序结构
-
-![美丽花儿](/images/java/base/serial/image003.gif "美丽花儿")
-
-
-Client 端通过 Façade Object 才可以与业务逻辑对象进行交互。而客户端的 Façade Object 不能直接由 Client 生成，而是需要 Server 端生成，然后序列化后通过网络将二进制对象数据传给 Client，Client 负责反序列化得到 Façade 对象。该模式可以使得 Client 端程序的使用需要服务器端的许可，同时 Client 端和服务器端的 Façade Object 类需要保持一致。当服务器端想要进行版本更新时，只要将服务器端的 Façade Object 类的序列化 ID 再次生成，当 Client 端反序列化 Façade Object 就会失败，也就是强制 Client 端从服务器端获取最新程序。
-
-# 静态变量序列化
-
-清单 2. 静态变量序列化问题代码
-
-{% highlight java %}
-    public class Test implements Serializable {
- 
-    private static final long serialVersionUID = 1L; 
-    public static int staticVar = 5; 
-    public static void main(String[] args) {
-        try {
-            //初始时staticVar为5
-            ObjectOutputStream out = new ObjectOutputStream(
-                    new FileOutputStream("result.obj"));
-            out.writeObject(new Test());
-            out.close();
- 
-            //序列化后修改为10
-            Test.staticVar = 10;
- 
-            ObjectInputStream oin = new ObjectInputStream(new FileInputStream(
-                    "result.obj"));
-            Test t = (Test) oin.readObject();
-            oin.close();
+{% highlight java linenos %}
+    public class SerTest
+    {
+        @Test public void serializeToDisk()
+        {
+            try
+            {
+                com.tedneward.Person ted = new com.tedneward.Person("Ted", "Neward", 39);
+                com.tedneward.Person charl = new com.tedneward.Person("Charlotte",
+                    "Neward", 38);
+     
+                ted.setSpouse(charl); charl.setSpouse(ted);
+     
+                FileOutputStream fos = new FileOutputStream("tempdata.ser");
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                oos.writeObject(ted);
+                oos.close();
+            }
+            catch (Exception ex)
+            {
+                fail("Exception thrown during test: " + ex.toString());
+            }
              
-            //再读取，通过t.staticVar打印新的值
-            System.out.println(t.staticVar);             
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            try
+            {
+                FileInputStream fis = new FileInputStream("tempdata.ser");
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                com.tedneward.Person ted = (com.tedneward.Person) ois.readObject();
+                ois.close();
+                 
+                assertEquals(ted.getFirstName(）， "Ted");
+                assertEquals(ted.getSpouse().getFirstName(）， "Charlotte");
+     
+                // Clean up the file
+                new File("tempdata.ser").delete();
+            }
+            catch (Exception ex)
+            {
+                fail("Exception thrown during test: " + ex.toString());
+            }
         }
     }
-}
-{% endhighlight %}
-清单 2 中的 main 方法，将对象序列化后，修改静态变量的数值，再将序列化对象读取出来，然后通过读取出来的对象获得静态变量的数值并打印出来。依照清单 2，这个 System.out.println(t.staticVar) 语句输出的是 10 还是 5 呢？
-
-最后的输出是 10，对于无法理解的读者认为，打印的 staticVar 是从读取的对象里获得的，应该是保存时的状态才对。之所以打印 10 的原因在于序列化时，并不保存静态变量，这其实比较容易理解，序列化保存的是对象的状态，静态变量属于类的状态，因此 ***序列化并不保存静态变量。***
-
-# 父类的序列化与 Transient 关键字
-
-**情境：** 一个子类实现了 Serializable 接口，它的父类都没有实现 Serializable 接口，序列化该子类对象，然后反序列化后输出父类定义的某变量的数值，该变量数值与序列化时的数值不同。
-
-**解决：** 要想将父类对象也序列化，就需要让父类也实现Serializable 接口。如果父类不实现的话的，就 需要有默认的无参的构造函数。在父类没有实现 Serializable 接口时，虚拟机是不会序列化父对象的，而一个 Java 对象的构造必须先有父对象，才有子对象，反序列化也不例外。所以反序列化时，为了构造父对象，只能调用父类的无参构造函数作为默认的父对象。因此当我们取父对象的变量值时，它的值是调用父类无参构造函数后的值。如果你考虑到这种序列化的情况，在父类无参构造函数中对变量进行初始化，否则的话，父类变量值都是默认声明的值，如 int 型的默认是 0，string 型的默认是 null。
-
-Transient 关键字的作用是控制变量的序列化，在变量声明前加上该关键字，可以阻止该变量被序列化到文件中，在被反序列化后，transient 变量的值被设为初始值，如 int 型的是 0，对象型的是 null。
-
-
-**特性使用案例**
-
-我们熟悉使用 Transient 关键字可以使得字段不被序列化，那么还有别的方法吗？根据父类对象序列化的规则，我们可以将不需要被序列化的字段抽取出来放到父类中，子类实现 Serializable 接口，父类不实现，根据父类序列化规则，父类的字段数据将不被序列化，形成类图如图 2 所示。
-
-图 2. 案例程序类图
-
-![美丽花儿](/images/java/base/serial/image005.gif "美丽花儿")
-
-上图中可以看出，attr1、attr2、attr3、attr5 都不会被序列化，放在父类中的好处在于当有另外一个 Child 类时，attr1、attr2、attr3 依然不会被序列化，不用重复抒写 transient，代码简洁。
-
-
-# 对敏感字段加密
-
-**情境：** 服务器端给客户端发送序列化对象数据，对象中有一些数据是敏感的，比如密码字符串等，希望对该密码字段在序列化时，进行加密，而客户端如果拥有解密的密钥，只有在客户端进行反序列化时，才可以对密码进行读取，这样可以一定程度保证序列化对象的数据安全。
-
-**解决：** 在序列化过程中，虚拟机会试图调用对象类里的 writeObject 和 readObject 方法，进行用户自定义的序列化和反序列化，如果没有这样的方法，则默认调用是 ObjectOutputStream 的 defaultWriteObject 方法以及 ObjectInputStream 的 defaultReadObject 方法。用户自定义的 writeObject 和 readObject 方法可以允许用户控制序列化的过程，比如可以在序列化的过程中动态改变序列化的数值。基于这个原理，可以在实际应用中得到使用，用于敏感字段的加密工作，清单 3 展示了这个过程。
-
-清单 3. 静态变量序列化问题代码
-{% highlight java %}
-    private static final long serialVersionUID = 1L;    
-    private String password = "pass";    
-    public String getPassword() {
-          return password;
-    }    
-    public void setPassword(String password) {
-       this.password = password;
-    }
-    
-    private void writeObject(ObjectOutputStream out) {
-       try {
-           PutField putFields = out.putFields();
-           System.out.println("原密码:" + password);
-           password = "encryption";//模拟加密
-           putFields.put("password", password);
-           System.out.println("加密后的密码" + password);
-           out.writeFields();
-       } catch (IOException e) {
-           e.printStackTrace();
-       }
-    }
-    
-    private void readObject(ObjectInputStream in) {
-       try {
-           GetField readFields = in.readFields();
-           Object object = readFields.get("password", "");
-           System.out.println(object.toString());
-           password = "pass";
-       } catch (IOException e) {
-           e.printStackTrace();
-       } catch (ClassNotFoundException e) {
-           e.printStackTrace();
-       }
-    
-    }
-    
-    public static void main(String[] args) {
-       try {
-           ObjectOutputStream out = new ObjectOutputStream(
-                   new FileOutputStream("result.obj"));
-           out.writeObject(new Test());
-           out.close();
-    
-           ObjectInputStream oin = new ObjectInputStream(new FileInputStream(
-                   "result.obj"));
-           Test t = (Test) oin.readObject();
-           System.out.println("解密后的字符串:" + t.getPassword());
-           oin.close();
-       } catch (FileNotFoundException e) {
-           e.printStackTrace();
-       } catch (IOException e) {
-           e.printStackTrace();
-       } catch (ClassNotFoundException e) {
-           e.printStackTrace();
-       }
-    }
-{% endhighlight %}
-在清单 3 的 writeObject 方法中，对密码进行了加密，在 readObject 中则对 password 进行解密，只有拥有密钥的客户端，才可以正确的解析出密码，确保了数据的安全。执行清单 3 后控制台输出如图 3 所示。
-
-图 3. 数据加密演示
-
-![美丽花儿](/images/java/base/serial/image007.jpg "美丽花儿")
-
-**特性使用案例**
-
-RMI 技术是完全基于 Java 序列化技术的，服务器端接口调用所需要的参数对象来至于客户端，它们通过网络相互传输。这就涉及 RMI 的安全传输的问题。一些敏感的字段，如用户名密码（用户登录时需要对密码进行传输），我们希望对其进行加密，这时，就可以采用本节介绍的方法在客户端对密码进行加密，服务器端进行解密，确保数据传输的安全性。
-
-# 序列化存储规则
-
-**情境：** 问题代码如清单 4 所示。
-
-清单 4. 存储规则问题代码
-
-{% highlight java %}
-   ObjectOutputStream out = new ObjectOutputStream(
-                   new FileOutputStream("result.obj"));
-   Test test = new Test();
-   //试图将对象两次写入文件
-   out.writeObject(test);
-   out.flush();
-   System.out.println(new File("result.obj").length());
-   out.writeObject(test);
-   out.close();
-   System.out.println(new File("result.obj").length());
- 
-   ObjectInputStream oin = new ObjectInputStream(new FileInputStream(
-           "result.obj"));
-   //从文件依次读出两个文件
-   Test t1 = (Test) oin.readObject();
-   Test t2 = (Test) oin.readObject();
-   oin.close();
-            
-   //判断两个引用是否指向同一个对象
-   System.out.println(t1 == t2);
 {% endhighlight %}
 
+到现在为止，还没有看到什么新鲜的或令人兴奋的事情，但是这是一个很好的出发点。我们将使用 Person 来发现您可能不 知道的关于 Java 对象序列化 的 5 件事。
 
-清单 3 中对同一对象两次写入文件，打印出写入一次对象后的存储大小和写入两次后的存储大小，然后从文件中反序列化出两个对象，比较这两个对象是否为同一对象。一般的思维是，两次写入对象，文件大小会变为两倍的大小，反序列化时，由于从文件读取，生成了两个对象，判断相等时应该是输入 false 才对，但是最后结果输出如图 4 所示。
+# 序列化允许重构
 
-图 4. 示例程序输出
+序列化允许一定数量的类变种，甚至重构之后也是如此，ObjectInputStream 仍可以很好地将其读出来。
 
-![美丽花儿](/images/java/base/serial/image009.jpg "美丽花儿")
+Java Object Serialization 规范可以自动管理的关键任务是：
 
-我们看到，第二次写入对象时文件只增加了 5 字节，并且两个对象是相等的，这是为什么呢？
+- 将新字段添加到类中
+- 将字段从 static 改为非 static
+- 将字段从 transient 改为非 transient
 
-**解答：** Java 序列化机制为了节省磁盘空间，具有特定的存储规则，当写入文件的为同一对象时，并不会再将对象的内容进行存储，而只是再次存储一份引用，上面增加的 5 字节的存储空间就是新增引用和一些控制信息的空间。反序列化时，恢复引用关系，使得清单 3 中的 t1 和 t2 指向唯一的对象，二者相等，输出 true。该存储规则极大的节省了存储空间。
+取决于所需的向后兼容程度，转换字段形式（从非 static 转换为 static 或从非 transient 转换为 transient）或者删除字段需要额外的消息传递。
 
-**特性案例分析**
+## 重构序列化类
 
-查看清单 5 的代码。
+既然已经知道序列化允许重构，我们来看看当把新字段添加到 Person 类中时，会发生什么事情。
 
-清单 5. 案例代码
+如清单 3 所示，PersonV2 在原先 Person 类的基础上引入一个表示性别的新字段。
 
-{% highlight java %}
-    ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("result.obj"));
-    Test test = new Test();
-    test.i = 1;
-    out.writeObject(test);
-    out.flush();
-    test.i = 2;
-    out.writeObject(test);
-    out.close();
-    ObjectInputStream oin = new ObjectInputStream(new FileInputStream(
-    					"result.obj"));
-    Test t1 = (Test) oin.readObject();
-    Test t2 = (Test) oin.readObject();
-    System.out.println(t1.i);
-    System.out.println(t2.i);
+清单 3. 将新字段添加到序列化的 Person 中
+
+{% highlight java linenos%}
+    enum Gender
+    {
+        MALE, FEMALE
+    }
+     
+    public class Person
+        implements java.io.Serializable
+    {
+        public Person(String fn, String ln, int a, Gender g)
+        {
+            this.firstName = fn; this.lastName = ln; this.age = a; this.gender = g;
+        }
+       
+        public String getFirstName() { return firstName; }
+        public String getLastName() { return lastName; }
+        public Gender getGender() { return gender; }
+        public int getAge() { return age; }
+        public Person getSpouse() { return spouse; }
+     
+        public void setFirstName(String value) { firstName = value; }
+        public void setLastName(String value) { lastName = value; }
+        public void setGender(Gender value) { gender = value; }
+        public void setAge(int value) { age = value; }
+        public void setSpouse(Person value) { spouse = value; }
+     
+        public String toString()
+        {
+            return "[Person: firstName=" + firstName + 
+                " lastName=" + lastName +
+                " gender=" + gender +
+                " age=" + age +
+                " spouse=" + spouse.getFirstName() +
+                "]";
+        }    
+     
+        private String firstName;
+        private String lastName;
+        private int age;
+        private Person spouse;
+        private Gender gender;
+    }
 {% endhighlight %}
 
+序列化使用一个 hash，该 hash 是根据给定源文件中几乎所有东西 — 方法名称、字段名称、字段类型、访问修改方法等 — 计算出来的，序列化将该 hash 值与序列化流中的 hash 值相比较。
 
+为了使 Java 运行时相信两种类型实际上是一样的，第二版和随后版本的 Person 必须与第一版有相同的序列化版本 hash（存储为 private static final serialVersionUID 字段）。因此，我们需要 serialVersionUID 字段，它是通过对原始（或 V1）版本的 Person 类运行 JDK serialver 命令计算出的。
 
-清单 4 的目的是希望将 test 对象两次保存到 result.obj 文件中，写入一次以后修改对象属性值再次保存第二次，然后从 result.obj 中再依次读出两个对象，输出这两个对象的 i 属性值。案例代码的目的原本是希望一次性传输对象修改前后的状态。
+一旦有了 Person 的 serialVersionUID，不仅可以从原始对象 Person 的序列化数据创建 PersonV2 对象（当出现新字段时，新字段被设为缺省值，最常见的是“null”），还可以反过来做：即从 PersonV2 的数据通过反序列化得到 Person，这毫不奇怪。
 
-结果两个输出的都是 1， 原因就是第一次写入对象以后，第二次再试图写的时候，虚拟机根据引用关系知道已经有一个相同对象已经写入文件，因此只保存第二次写的引用，所以读取时，都是第一次保存的对象。读者在使用一个文件多次 writeObject 需要特别注意这个问题。
+# 序列化并不安全
 
-# 小结
+让 Java 开发人员诧异并感到不快的是，序列化二进制格式完全编写在文档中，并且完全可逆。实际上，只需将二进制序列化流的内容转储到控制台，就足以看清类是什么样子，以及它包含什么内容。
 
-本文通过几个具体的情景，介绍了 Java 序列化的一些高级知识，虽说高级，并不是说读者们都不了解，希望用笔者介绍的情景让读者加深印象，能够更加合理的利用 Java 序列化技术，在未来开发之路上遇到序列化问题时，可以及时的解决。由于本人知识水平有限，文章中倘若有错误的地方，欢迎联系我批评指正。
+这对于安全性有着不良影响。例如，当通过 RMI 进行远程方法调用时，通过连接发送的对象中的任何 private 字段几乎都是以明文的方式出现在套接字流中，这显然容易招致哪怕最简单的安全问题。
 
+幸运的是，序列化允许 “hook” 序列化过程，并在序列化之前和反序列化之后保护（或模糊化）字段数据。可以通过在 Serializable 对象上提供一个 writeObject 方法来做到这一点。
 
-源文：https://www.ibm.com/developerworks/cn/java/j-lo-serial/
+## 模糊化序列化数据
+
+假设 Person 类中的敏感数据是 age 字段。毕竟，女士忌谈年龄。 我们可以在序列化之前模糊化该数据，将数位循环左移一位，然后在反序列化之后复位。（您可以开发更安全的算法，当前这个算法只是作为一个例子。）
+
+为了 “hook” 序列化过程，我们将在 Person 上实现一个 writeObject 方法；为了 “hook” 反序列化过程，我们将在同一个类上实现一个 readObject 方法。重要的是这两个方法的细节要正确 — 如果访问修改方法、参数或名称不同于清单 4 中的内容，那么代码将不被察觉地失败，Person 的 age 将暴露。
+
+清单 4. 模糊化序列化数据
+
+{% highlight java linenos %}
+    public class Person
+        implements java.io.Serializable
+    {
+        public Person(String fn, String ln, int a)
+        {
+            this.firstName = fn; this.lastName = ln; this.age = a;
+        }
+     
+        public String getFirstName() { return firstName; }
+        public String getLastName() { return lastName; }
+        public int getAge() { return age; }
+        public Person getSpouse() { return spouse; }
+         
+        public void setFirstName(String value) { firstName = value; }
+        public void setLastName(String value) { lastName = value; }
+        public void setAge(int value) { age = value; }
+        public void setSpouse(Person value) { spouse = value; }
+     
+        private void writeObject(java.io.ObjectOutputStream stream)
+            throws java.io.IOException
+        {
+            // "Encrypt"/obscure the sensitive data
+            age = age << 2;
+            stream.defaultWriteObject();
+        }
+     
+        private void readObject(java.io.ObjectInputStream stream)
+            throws java.io.IOException, ClassNotFoundException
+        {
+            stream.defaultReadObject();
+     
+            // "Decrypt"/de-obscure the sensitive data
+            age = age << 2;
+        }
+         
+        public String toString()
+        {
+            return "[Person: firstName=" + firstName + 
+                " lastName=" + lastName +
+                " age=" + age +
+                " spouse=" + (spouse!=null ? spouse.getFirstName() : "[null]") +
+                "]";
+        }      
+     
+        private String firstName;
+        private String lastName;
+        private int age;
+        private Person spouse;
+    }
+{% endhighlight %}
+
+如果需要查看被模糊化的数据，总是可以查看序列化数据流/文件。而且，由于该格式被完全文档化，即使不能访问类本身，也仍可以读取序列化流中的内容。
+
+# 序列化的数据可以被签名和密封
+
+上一个技巧假设您想模糊化序列化数据，而不是对其加密或者确保它不被修改。当然，通过使用 writeObject 和 readObject 可以实现密码加密和签名管理，但其实还有更好的方式。
+
+如果需要对整个对象进行加密和签名，最简单的是将它放在一个 javax.crypto.SealedObject 和/或 java.security.SignedObject 包装器中。两者都是可序列化的，所以将对象包装在 SealedObject 中可以围绕原对象创建一种 “包装盒”。必须有对称密钥才能解密，而且密钥必须单独管理。同样，也可以将 SignedObject 用于数据验证，并且对称密钥也必须单独管理。
+
+结合使用这两种对象，便可以轻松地对序列化数据进行密封和签名，而不必强调关于数字签名验证或加密的细节。很简洁，是吧？
+
+# 序列化允许将代理放在流中
+
+很多情况下，类中包含一个核心数据元素，通过它可以派生或找到类中的其他字段。在此情况下，没有必要序列化整个对象。可以将字段标记为 transient，但是每当有方法访问一个字段时，类仍然必须显式地产生代码来检查它是否被初始化。
+
+如果首要问题是序列化，那么最好指定一个 flyweight 或代理放在流中。为原始 Person 提供一个 writeReplace 方法，可以序列化不同类型的对象来代替它。类似地，如果反序列化期间发现一个 readResolve 方法，那么将调用该方法，将替代对象提供给调用者。
+
+## 打包和解包代理
+
+writeReplace 和 readResolve 方法使 Person 类可以将它的所有数据（或其中的核心数据）打包到一个 PersonProxy 中，将它放入到一个流中，然后在反序列化时再进行解包。
+
+清单 5. 你完整了我，我代替了你
+
+{% highlight java linenos%}
+    class PersonProxy
+        implements java.io.Serializable
+    {
+        public PersonProxy(Person orig)
+        {
+            data = orig.getFirstName() + "," + orig.getLastName() + "," + orig.getAge();
+            if (orig.getSpouse() != null)
+            {
+                Person spouse = orig.getSpouse();
+                data = data + "," + spouse.getFirstName() + "," + spouse.getLastName() + ","  
+                  + spouse.getAge();
+            }
+        }
+     
+        public String data;
+        private Object readResolve()
+            throws java.io.ObjectStreamException
+        {
+            String[] pieces = data.split(",");
+            Person result = new Person(pieces[0], pieces[1], Integer.parseInt(pieces[2]));
+            if (pieces.length > 3)
+            {
+                result.setSpouse(new Person(pieces[3], pieces[4], Integer.parseInt
+                  (pieces[5])));
+                result.getSpouse().setSpouse(result);
+            }
+            return result;
+        }
+    }
+     
+    public class Person
+        implements java.io.Serializable
+    {
+        public Person(String fn, String ln, int a)
+        {
+            this.firstName = fn; this.lastName = ln; this.age = a;
+        }
+     
+        public String getFirstName() { return firstName; }
+        public String getLastName() { return lastName; }
+        public int getAge() { return age; }
+        public Person getSpouse() { return spouse; }
+     
+        private Object writeReplace()
+            throws java.io.ObjectStreamException
+        {
+            return new PersonProxy(this);
+        }
+         
+        public void setFirstName(String value) { firstName = value; }
+        public void setLastName(String value) { lastName = value; }
+        public void setAge(int value) { age = value; }
+        public void setSpouse(Person value) { spouse = value; }   
+     
+        public String toString()
+        {
+            return "[Person: firstName=" + firstName + 
+                " lastName=" + lastName +
+                " age=" + age +
+                " spouse=" + spouse.getFirstName() +
+                "]";
+        }    
+         
+        private String firstName;
+        private String lastName;
+        private int age;
+        private Person spouse;
+    }
+{% endhighlight %}
+
+注意，PersonProxy 必须跟踪 Person 的所有数据。这通常意味着代理需要是 Person 的一个内部类，以便能访问 private 字段。有时候，代理还需要追踪其他对象引用并手动序列化它们，例如 Person 的 spouse。
+
+这种技巧是少数几种不需要读/写平衡的技巧之一。例如，一个类被重构成另一种类型后的版本可以提供一个 readResolve 方法，以便静默地将被序列化的对象转换成新类型。类似地，它可以采用 writeReplace 方法将旧类序列化成新版本。
+
+# 信任，但要验证
+
+认为序列化流中的数据总是与最初写到流中的数据一致，这没有问题。但是，正如一位美国前总统所说的，“信任，但要验证”。
+
+对于序列化的对象，这意味着验证字段，以确保在反序列化之后它们仍具有正确的值，“以防万一”。为此，可以实现 ObjectInputValidation 接口，并覆盖 validateObject() 方法。如果调用该方法时发现某处有错误，则抛出一个 InvalidObjectException。
+
+# 结束语
+
+Java 对象序列化比大多数 Java 开发人员想象的更灵活，这使我们有更多的机会解决棘手的情况。
+
+幸运的是，像这样的编程妙招在 JVM 中随处可见。关键是要知道它们，在遇到难题的时候能用上它们。
+
+源文：https://www.ibm.com/developerworks/cn/java/j-5things1/index.html
