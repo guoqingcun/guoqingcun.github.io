@@ -4,18 +4,22 @@ layout: default
 
   {% for post in site.posts limit:3 %}
     <!-- article -->
-    <article class="article">
-      <h2 class="article__title">
+    <article class="article_new">
+      <h3 class="article__title" style="display: inline-block;">
         <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-      </h2>
-      <time class="article__date" datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%b %-d, %Y" }}</time>
-      <p class="article__excerpt">{{ post.excerpt | truncate: 160 }}</p>
-      <a href="{{ post.url | prepend: site.baseurl }}" class="article__more">Read more »</a>
+      </h3>
+      <time class="article__date" datetime="{{ post.date | date: "%Y-%m-%d" }}" style="display: inline-block; float: right;">{{ post.date | date: "%b %-d, %Y" }}</time>
+	  <p class="article__excerpt"></p>
+	  <hr>
+	  <p></p>
+      <!--<p class="article__excerpt">{{ post.excerpt | truncate: 160 }}</p>-->
+      <!--<a href="{{ post.url | prepend: site.baseurl }}" class="article__more">Read more »</a>-->
     </article>
     <!-- / article -->
   {% endfor %}
 
-    <!-- <nav class="blocks blocks--space">
+<!--
+    <nav class="blocks blocks--space">
       <div class="blocks__item">
         {% if paginator.previous_page %}<a href="{{ paginator.previous_page_path }}">Previous</a>{% endif %}
       </div>
@@ -25,4 +29,5 @@ layout: default
       <div class="blocks__item">
         {% if paginator.next_page %}<a href="{{ paginator.next_page_path }}">Next</a>{% endif %}
       </div>
-    </nav> -->
+    </nav>
+-->

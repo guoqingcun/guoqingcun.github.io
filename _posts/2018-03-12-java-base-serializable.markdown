@@ -2,7 +2,7 @@
 layout: post
 title:  "Java 序列化的高级认识"
 date:   2018-03-12 17:19:17 +0800
-categories: jvm
+categories: Java
 location: 
 description: 
 ---
@@ -37,48 +37,37 @@ description:
 
 清单 1. 相同功能代码不同序列化 ID 的类对比
 
-<pre><code>
-    package com.inout; 	 
-	
-	import java.io.Serializable; 	 
-	public class A implements Serializable { 
-	 
-	    private static final long serialVersionUID = 1L; 
-	 
-	    private String name; 
-	    
-	    public String getName() 
-	    { 
-	        return name; 
-	    } 
-	    
-	    public void setName(String name) 
-	    { 
-	        this.name = name; 
-	    } 
-	} 
-	 
-	package com.inout; 
-	 
-	import java.io.Serializable; 
-	 
-	public class A implements Serializable { 
-	 
-	    private static final long serialVersionUID = 2L; 
-	    
-	    private String name; 
-	    
-	    public String getName() 
-	    { 
-	        return name; 
-	    } 		
-	    
-	    public void setName(String name) 
-	    { 
-	        this.name = name; 
-	    } 
-	}
-   </code></pre>
+{% highlight java linenos %}
+    package com.inout;	
+    import java.io.Serializable; 	 
+    public class A implements Serializable {  
+        private static final long serialVersionUID = 1L;  
+        private String name;     
+        public String getName() 
+        { 
+            return name; 
+        }     
+        public void setName(String name) 
+        { 
+            this.name = name; 
+        } 
+    } 
+     
+    package com.inout;  
+    import java.io.Serializable;  
+    public class A implements Serializable {  
+        private static final long serialVersionUID = 2L;     
+        private String name;     
+        public String getName() 
+        { 
+            return name; 
+        } 		    
+        public void setName(String name) 
+        { 
+            this.name = name; 
+        } 
+    }
+{% endhighlight %}
 序列化 ID 在 Eclipse 下提供了两种生成策略，一个是固定的 1L，一个是随机生成一个不重复的 long 类型数据（实际上是使用 JDK 工具生成），在这里有一个建议，如果没有特殊需求，就是用默认的 1L 就可以，这样可以确保代码一致时反序列化成功。那么随机生成的序列化 ID 有什么作用呢，有些时候，通过改变序列化 ID 可以用来限制某些用户的使用。
 
 **特性使用案例**
@@ -96,13 +85,11 @@ Client 端通过 Façade Object 才可以与业务逻辑对象进行交互。而
 
 清单 2. 静态变量序列化问题代码
 
-<pre><code>
+{% highlight java %}
     public class Test implements Serializable {
  
-    private static final long serialVersionUID = 1L;
- 
-    public static int staticVar = 5;
- 
+    private static final long serialVersionUID = 1L; 
+    public static int staticVar = 5; 
     public static void main(String[] args) {
         try {
             //初始时staticVar为5
@@ -120,8 +107,7 @@ Client 端通过 Façade Object 才可以与业务逻辑对象进行交互。而
             oin.close();
              
             //再读取，通过t.staticVar打印新的值
-            System.out.println(t.staticVar);
-             
+            System.out.println(t.staticVar);             
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -131,7 +117,7 @@ Client 端通过 Façade Object 才可以与业务逻辑对象进行交互。而
         }
     }
 }
-</code></pre>
+{% endhighlight %}
 清单 2 中的 main 方法，将对象序列化后，修改静态变量的数值，再将序列化对象读取出来，然后通过读取出来的对象获得静态变量的数值并打印出来。依照清单 2，这个 System.out.println(t.staticVar) 语句输出的是 10 还是 5 呢？
 
 最后的输出是 10，对于无法理解的读者认为，打印的 staticVar 是从读取的对象里获得的，应该是保存时的状态才对。之所以打印 10 的原因在于序列化时，并不保存静态变量，这其实比较容易理解，序列化保存的是对象的状态，静态变量属于类的状态，因此 ***序列化并不保存静态变量。***
@@ -163,15 +149,12 @@ Transient 关键字的作用是控制变量的序列化，在变量声明前加�
 **解决：** 在序列化过程中，虚拟机会试图调用对象类里的 writeObject 和 readObject 方法，进行用户自定义的序列化和反序列化，如果没有这样的方法，则默认调用是 ObjectOutputStream 的 defaultWriteObject 方法以及 ObjectInputStream 的 defaultReadObject 方法。用户自定义的 writeObject 和 readObject 方法可以允许用户控制序列化的过程，比如可以在序列化的过程中动态改变序列化的数值。基于这个原理，可以在实际应用中得到使用，用于敏感字段的加密工作，清单 3 展示了这个过程。
 
 清单 3. 静态变量序列化问题代码
-<pre><code>
-    private static final long serialVersionUID = 1L;
-    
-    private String password = "pass";
-    
+{% highlight java %}
+    private static final long serialVersionUID = 1L;    
+    private String password = "pass";    
     public String getPassword() {
           return password;
-    }
-    
+    }    
     public void setPassword(String password) {
        this.password = password;
     }
@@ -223,7 +206,7 @@ Transient 关键字的作用是控制变量的序列化，在变量声明前加�
            e.printStackTrace();
        }
     }
-</code></pre>
+{% endhighlight %}
 在清单 3 的 writeObject 方法中，对密码进行了加密，在 readObject 中则对 password 进行解密，只有拥有密钥的客户端，才可以正确的解析出密码，确保了数据的安全。执行清单 3 后控制台输出如图 3 所示。
 
 图 3. 数据加密演示
@@ -240,7 +223,7 @@ RMI 技术是完全基于 Java 序列化技术的，服务器端接口调用所�
 
 清单 4. 存储规则问题代码
 
-<pre><code>
+{% highlight java %}
    ObjectOutputStream out = new ObjectOutputStream(
                    new FileOutputStream("result.obj"));
    Test test = new Test();
@@ -261,7 +244,7 @@ RMI 技术是完全基于 Java 序列化技术的，服务器端接口调用所�
             
    //判断两个引用是否指向同一个对象
    System.out.println(t1 == t2);
-</code></pre>
+{% endhighlight %}
 
 
 清单 3 中对同一对象两次写入文件，打印出写入一次对象后的存储大小和写入两次后的存储大小，然后从文件中反序列化出两个对象，比较这两个对象是否为同一对象。一般的思维是，两次写入对象，文件大小会变为两倍的大小，反序列化时，由于从文件读取，生成了两个对象，判断相等时应该是输入 false 才对，但是最后结果输出如图 4 所示。
@@ -280,7 +263,7 @@ RMI 技术是完全基于 Java 序列化技术的，服务器端接口调用所�
 
 清单 5. 案例代码
 
-<pre><code>
+{% highlight java %}
     ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("result.obj"));
     Test test = new Test();
     test.i = 1;
@@ -295,7 +278,7 @@ RMI 技术是完全基于 Java 序列化技术的，服务器端接口调用所�
     Test t2 = (Test) oin.readObject();
     System.out.println(t1.i);
     System.out.println(t2.i);
-</code></pre>
+{% endhighlight %}
 
 
 
