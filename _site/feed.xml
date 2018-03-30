@@ -8,13 +8,86 @@ In spare time, I like reading book, surfing internet, watching movie.
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 13 Mar 2018 14:22:40 +0800</pubDate>
-    <lastBuildDate>Tue, 13 Mar 2018 14:22:40 +0800</lastBuildDate>
+    <pubDate>Fri, 30 Mar 2018 11:36:23 +0800</pubDate>
+    <lastBuildDate>Fri, 30 Mar 2018 11:36:23 +0800</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
+    
+      <item>
+        <title>一次排查MYSQL索引失效的过程</title>
+        <description>&lt;hr /&gt;
+
+&lt;h1 id=&quot;背景&quot;&gt;背景&lt;/h1&gt;
+
+&lt;p&gt;由于一次系统升级，造成生产系统中订单商品金额记录错误。账务在计算销售成本时出现差额。订单商品表记录270W，则需要修复3K条记录。&lt;/p&gt;
+
+&lt;h1 id=&quot;修复过程中的问题&quot;&gt;修复过程中的问题&lt;/h1&gt;
+
+&lt;p&gt;在生产环境修复一条记录花费时间大概7秒.这个速度远远超出我们的想象，慢的出奇。&lt;/p&gt;
+
+&lt;h1 id=&quot;排查&quot;&gt;排查&lt;/h1&gt;
+
+&lt;p&gt;发现订单商品金额记录错误后，按排江勇（同事）处理此问题。同事很快的定位到问题，且给出了使用存储过程做为解决方案。但执行存储过程中发现速度出奇的慢，修复一条记录的时间大概7秒钟。如此这般，仅3K，则需要花费5个小时的时间。这是不可接受的。&lt;/p&gt;
+
+&lt;p&gt;但又百思不解，在where中的字段都有索引，为什么还会如此的慢。经过多轮尝试发现一个奇怪的现象，修复一条数据时做了大量的表扫码(Handler_read_rnd_next的数值210W)。这也说明在where中的条件未使用到索引。
+小试了一把，将where条件中的变量@order_code由固定字符串替换后，Handler_read_rnd_next的数值为3.修复记录仅用了几十毫秒。这就断定问题是由变量@order_code引起的.初次断定是由于@order_code的编码问题导致。江勇通过select character(@order_code)得到的结果是:utf8mb4,而表中的字段编码是utf8.原来如此.&lt;/p&gt;
+
+&lt;h1 id=&quot;解决方案&quot;&gt;解决方案&lt;/h1&gt;
+
+&lt;p&gt;把@order_code转为utf8编码&lt;/p&gt;
+
+&lt;p&gt;SELECT CONVERT(@order_code, CHAR CHARACTER SET utf8) INTO temp;&lt;/p&gt;
+
+&lt;p&gt;搞定&lt;/p&gt;
+
+&lt;h1 id=&quot;小结&quot;&gt;小结&lt;/h1&gt;
+
+&lt;p&gt;SQL无法走索引常见的有如下9种情况：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;统计信息不准确&lt;/li&gt;
+  &lt;li&gt;索引列的值允许为NULL&lt;/li&gt;
+  &lt;li&gt;谓词使用了不等于（&amp;lt;&amp;gt;, !=）&lt;/li&gt;
+  &lt;li&gt;LIKE前通配或全通配的查询&lt;/li&gt;
+  &lt;li&gt;索引列使用了函数、数学运算、其它表达式等&lt;/li&gt;
+  &lt;li&gt;使用了隐式类型转换&lt;/li&gt;
+  &lt;li&gt;查询转换失败&lt;/li&gt;
+  &lt;li&gt;左右字段编码不同&lt;/li&gt;
+  &lt;li&gt;其它语句逻辑原因&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/people/jiangyong.jpg&quot; alt=&quot;王江勇&quot; title=&quot;王江勇&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 30 Mar 2018 10:16:17 +0800</pubDate>
+        <link>http://localhost:4000/mysql-index-failure/</link>
+        <guid isPermaLink="true">http://localhost:4000/mysql-index-failure/</guid>
+        
+        
+        <category>Java</category>
+        
+      </item>
     
       <item>
         <title>Java 对象序列化</title>
         <description>&lt;hr /&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#java-序列化简介&quot; id=&quot;markdown-toc-java-序列化简介&quot;&gt;Java 序列化简介&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#序列化允许重构&quot; id=&quot;markdown-toc-序列化允许重构&quot;&gt;序列化允许重构&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#重构序列化类&quot; id=&quot;markdown-toc-重构序列化类&quot;&gt;重构序列化类&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#序列化并不安全&quot; id=&quot;markdown-toc-序列化并不安全&quot;&gt;序列化并不安全&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#模糊化序列化数据&quot; id=&quot;markdown-toc-模糊化序列化数据&quot;&gt;模糊化序列化数据&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#序列化的数据可以被签名和密封&quot; id=&quot;markdown-toc-序列化的数据可以被签名和密封&quot;&gt;序列化的数据可以被签名和密封&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#序列化允许将代理放在流中&quot; id=&quot;markdown-toc-序列化允许将代理放在流中&quot;&gt;序列化允许将代理放在流中&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#打包和解包代理&quot; id=&quot;markdown-toc-打包和解包代理&quot;&gt;打包和解包代理&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#信任但要验证&quot; id=&quot;markdown-toc-信任但要验证&quot;&gt;信任，但要验证&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#结束语&quot; id=&quot;markdown-toc-结束语&quot;&gt;结束语&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h1 id=&quot;java-序列化简介&quot;&gt;Java 序列化简介&lt;/h1&gt;
 
@@ -600,6 +673,17 @@ In spare time, I like reading book, surfing internet, watching movie.
         <title>Java 序列化的高级认识</title>
         <description>&lt;hr /&gt;
 
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#引言&quot; id=&quot;markdown-toc-引言&quot;&gt;引言&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#文章结构&quot; id=&quot;markdown-toc-文章结构&quot;&gt;文章结构&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#序列化-id-问题&quot; id=&quot;markdown-toc-序列化-id-问题&quot;&gt;序列化 ID 问题&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#静态变量序列化&quot; id=&quot;markdown-toc-静态变量序列化&quot;&gt;静态变量序列化&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#父类的序列化与-transient-关键字&quot; id=&quot;markdown-toc-父类的序列化与-transient-关键字&quot;&gt;父类的序列化与 Transient 关键字&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#对敏感字段加密&quot; id=&quot;markdown-toc-对敏感字段加密&quot;&gt;对敏感字段加密&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#序列化存储规则&quot; id=&quot;markdown-toc-序列化存储规则&quot;&gt;序列化存储规则&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#小结&quot; id=&quot;markdown-toc-小结&quot;&gt;小结&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h1 id=&quot;引言&quot;&gt;引言&lt;/h1&gt;
 
 &lt;p&gt;将 Java 对象序列化为二进制文件的 Java 序列化技术是 Java 系列技术中一个较为重要的技术点，在大部分情况下，开发人员只需要了解被序列化的类需要实现 Serializable 接口，使用 ObjectInputStream 和 ObjectOutputStream 进行对象的读写。然而在有些情况下，光知道这些还远远不够，文章列举了笔者遇到的一些真实情境，它们与 Java 序列化相关，通过分析情境出现的原因，使读者轻松牢记 Java 序列化中的一些高级认识。&lt;/p&gt;
@@ -912,7 +996,13 @@ In spare time, I like reading book, surfing internet, watching movie.
       <item>
         <title>喜欢的电影</title>
         <description>&lt;hr /&gt;
-&lt;p&gt;国外电影&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#国外电影&quot; id=&quot;markdown-toc-国外电影&quot;&gt;国外电影&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#国内电影&quot; id=&quot;markdown-toc-国内电影&quot;&gt;国内电影&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;国外电影&quot;&gt;国外电影&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;泰坦尼克号&lt;/li&gt;
@@ -945,7 +1035,7 @@ In spare time, I like reading book, surfing internet, watching movie.
   &lt;li&gt;血战钢锯岭&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;国内电影&lt;/p&gt;
+&lt;h2 id=&quot;国内电影&quot;&gt;国内电影&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;让子弹飞 Let The Bullets Fly (2010)&lt;/li&gt;
