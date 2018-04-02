@@ -8,21 +8,21 @@ In spare time, I like reading book, surfing internet, watching movie.
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 02 Apr 2018 16:13:42 +0800</pubDate>
-    <lastBuildDate>Mon, 02 Apr 2018 16:13:42 +0800</lastBuildDate>
+    <pubDate>Mon, 02 Apr 2018 16:24:24 +0800</pubDate>
+    <lastBuildDate>Mon, 02 Apr 2018 16:24:24 +0800</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
     
       <item>
         <title>LinkedList remove方法陷阱</title>
         <description>&lt;hr /&gt;
 
-&lt;h1 id=&quot;linkedlist定义&quot;&gt;LinkedList定义&lt;/h1&gt;
+&lt;h2 id=&quot;linkedlist定义&quot;&gt;LinkedList定义&lt;/h2&gt;
 
-&lt;p&gt;LinkedList是个实现list和Deque接口的双向链表，非线程安全。而我们应该在什么场景下使用LinkedList呢.&lt;/p&gt;
+&lt;p&gt;LinkedList是实现list和Deque接口的双向链表且非线程安全。LinkedList应该在什么场景下使用LinkedList呢?&lt;/p&gt;
 
-&lt;p&gt;熟悉双向链表的同学,首先想到的应该是随机增删等操作。随机增删是双向链表所擅长的功能，但LinkedList果真如些吗？&lt;/p&gt;
+&lt;p&gt;熟悉双向链表的同学,首先想到的应该是随机增删等操作。没错，随机增删是双向链表所擅长的操作，但LinkedList果真如些吗？&lt;/p&gt;
 
-&lt;h1 id=&quot;remove方法时间复杂度o1&quot;&gt;remove方法时间复杂度O(1)?&lt;/h1&gt;
+&lt;h2 id=&quot;remove方法时间复杂度o1&quot;&gt;remove方法时间复杂度O(1)?&lt;/h2&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
 2
@@ -61,7 +61,17 @@ In spare time, I like reading book, surfing internet, watching movie.
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;从代码上我们可以对O(1)说NO，显然，LinkedList.remove(Object)方法的时间复杂度是O(n)+O(1)。最坏情况下要删除的元素是最后一个，你都要比较N-1次才能找到要删除的元素&lt;/p&gt;
+&lt;p&gt;从代码上我们可以对O(1)说NO，显然，LinkedList.remove(Object)方法的时间复杂度是O(n)+O(1)。最坏情况下要删除的元素是最后一个，你都要比较N-1次才能找到要删除的元素。&lt;/p&gt;
+
+&lt;h2 id=&quot;存在同样遍历的问题的方法&quot;&gt;存在同样遍历的问题的方法&lt;/h2&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;indexOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;  
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
 </description>
         <pubDate>Mon, 02 Apr 2018 16:12:17 +0800</pubDate>
         <link>http://localhost:4000/java-base-linkedlist-remove/</link>
