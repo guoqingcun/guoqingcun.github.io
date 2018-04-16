@@ -8,8 +8,8 @@ In spare time, I like reading book, surfing internet, watching movie.
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 02 Apr 2018 22:01:08 +0800</pubDate>
-    <lastBuildDate>Mon, 02 Apr 2018 22:01:08 +0800</lastBuildDate>
+    <pubDate>Mon, 16 Apr 2018 17:56:11 +0800</pubDate>
+    <lastBuildDate>Mon, 16 Apr 2018 17:56:11 +0800</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
     
       <item>
@@ -1211,15 +1211,20 @@ In spare time, I like reading book, surfing internet, watching movie.
       </item>
     
       <item>
-        <title>喜欢的电影</title>
+        <title>喜欢的那些事</title>
         <description>&lt;hr /&gt;
 
 &lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#国外电影&quot; id=&quot;markdown-toc-国外电影&quot;&gt;国外电影&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#国内电影&quot; id=&quot;markdown-toc-国内电影&quot;&gt;国内电影&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#喜爱的电影&quot; id=&quot;markdown-toc-喜爱的电影&quot;&gt;喜爱的电影&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#国外电影&quot; id=&quot;markdown-toc-国外电影&quot;&gt;国外电影&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#国内电影&quot; id=&quot;markdown-toc-国内电影&quot;&gt;国内电影&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#喜爱的音乐&quot; id=&quot;markdown-toc-喜爱的音乐&quot;&gt;喜爱的音乐&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;国外电影&quot;&gt;国外电影&lt;/h2&gt;
+&lt;h2 id=&quot;喜爱的电影&quot;&gt;喜爱的电影&lt;/h2&gt;
+&lt;h3 id=&quot;国外电影&quot;&gt;国外电影&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;泰坦尼克号&lt;/li&gt;
@@ -1252,7 +1257,7 @@ In spare time, I like reading book, surfing internet, watching movie.
   &lt;li&gt;血战钢锯岭&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;国内电影&quot;&gt;国内电影&lt;/h2&gt;
+&lt;h3 id=&quot;国内电影&quot;&gt;国内电影&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;让子弹飞 Let The Bullets Fly (2010)&lt;/li&gt;
@@ -1261,6 +1266,88 @@ In spare time, I like reading book, surfing internet, watching movie.
   &lt;li&gt;倩女幽魂 A Chinese Ghost Story (1987)&lt;/li&gt;
   &lt;li&gt;东方不败（林青霞）&lt;/li&gt;
   &lt;li&gt;天若有情 A Moment of Romance (1990)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;喜爱的音乐&quot;&gt;喜爱的音乐&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;我们都一样Live)&lt;/li&gt;
+  &lt;li&gt;有点甜《萌三国》网游主题曲《微微一笑很倾城》电视剧插曲国&lt;/li&gt;
+  &lt;li&gt;礼佛药王寺&lt;/li&gt;
+  &lt;li&gt;南无地藏王菩萨&lt;/li&gt;
+  &lt;li&gt;我佛慈悲&lt;/li&gt;
+  &lt;li&gt;菩提树下&lt;/li&gt;
+  &lt;li&gt;愿做菩萨那朵莲回&lt;/li&gt;
+  &lt;li&gt;菩萨座前&lt;/li&gt;
+  &lt;li&gt;回忆总想哭&lt;/li&gt;
+  &lt;li&gt;我们不一样&lt;/li&gt;
+  &lt;li&gt;人生何处不相逢《最真的梦》粤语版&lt;/li&gt;
+  &lt;li&gt;七秒钟的记忆回&lt;/li&gt;
+  &lt;li&gt;情难枕&lt;/li&gt;
+  &lt;li&gt;都选C《缝纫机乐队》电影推广曲&lt;/li&gt;
+  &lt;li&gt;少年游&lt;/li&gt;
+  &lt;li&gt;Unti You&lt;/li&gt;
+  &lt;li&gt;Yesterday once more《生命因你动听》电影主题曲回&lt;/li&gt;
+  &lt;li&gt;一次就好《夏洛特烦恼》&lt;/li&gt;
+  &lt;li&gt;问情《戏说乾隆》电视剧片头曲&lt;/li&gt;
+  &lt;li&gt;女儿情&lt;/li&gt;
+  &lt;li&gt;沧海一声笑《笑傲江湖》&lt;/li&gt;
+  &lt;li&gt;做个真的我《笑红尘》粤语版&lt;/li&gt;
+  &lt;li&gt;神武女儿国&lt;/li&gt;
+  &lt;li&gt;敢为天下先&lt;/li&gt;
+  &lt;li&gt;花间辞 剑侠情缘三同人曲&lt;/li&gt;
+  &lt;li&gt;水墨江南&lt;/li&gt;
+  &lt;li&gt;清明樱花祭&lt;/li&gt;
+  &lt;li&gt;逍遥叹《仙剑奇侠传》&lt;/li&gt;
+  &lt;li&gt;轮回之境&lt;/li&gt;
+  &lt;li&gt;芊芊&lt;/li&gt;
+  &lt;li&gt;倾城一笑&lt;/li&gt;
+  &lt;li&gt;你是我今天的依靠&lt;/li&gt;
+  &lt;li&gt;年轮&lt;/li&gt;
+  &lt;li&gt;寸缕&lt;/li&gt;
+  &lt;li&gt;蜀绣&lt;/li&gt;
+  &lt;li&gt;新贵妃醉酒&lt;/li&gt;
+  &lt;li&gt;少年中国&lt;/li&gt;
+  &lt;li&gt;乌云然&lt;/li&gt;
+  &lt;li&gt;铁血丹心&lt;/li&gt;
+  &lt;li&gt;庐州月&lt;/li&gt;
+  &lt;li&gt;听《美人制造》&lt;/li&gt;
+  &lt;li&gt;愿望《精武飞鸿》&lt;/li&gt;
+  &lt;li&gt;雨花石&lt;/li&gt;
+  &lt;li&gt;放了手就忘了我&lt;/li&gt;
+  &lt;li&gt;我变了 我没变&lt;/li&gt;
+  &lt;li&gt;怎样&lt;/li&gt;
+  &lt;li&gt;中国好男儿&lt;/li&gt;
+  &lt;li&gt;分手了别来打扰我&lt;/li&gt;
+  &lt;li&gt;玉良缘《金玉良缘》电视剧片尾曲&lt;/li&gt;
+  &lt;li&gt;月牙湾&lt;/li&gt;
+  &lt;li&gt;画心《画皮》&lt;/li&gt;
+  &lt;li&gt;曹操&lt;/li&gt;
+  &lt;li&gt;Susan说&lt;/li&gt;
+  &lt;li&gt;红颜《荆轲传奇》&lt;/li&gt;
+  &lt;li&gt;钗头凤&lt;/li&gt;
+  &lt;li&gt;决别诗《少年杨家将》&lt;/li&gt;
+  &lt;li&gt;黄种人《小鱼儿与花无缺》&lt;/li&gt;
+  &lt;li&gt;霸王别姬&lt;/li&gt;
+  &lt;li&gt;葬英雄&lt;/li&gt;
+  &lt;li&gt;相思引《诛仙》&lt;/li&gt;
+  &lt;li&gt;蝶恋花&lt;/li&gt;
+  &lt;li&gt;等一分钟&lt;/li&gt;
+  &lt;li&gt;老人与海&lt;/li&gt;
+  &lt;li&gt;你的承诺&lt;/li&gt;
+  &lt;li&gt;该死的温柔&lt;/li&gt;
+  &lt;li&gt;秋天不回来&lt;/li&gt;
+  &lt;li&gt;三生石 三生路&lt;/li&gt;
+  &lt;li&gt;白狐&lt;/li&gt;
+  &lt;li&gt;大城小爱&lt;/li&gt;
+  &lt;li&gt;此生不换&lt;/li&gt;
+  &lt;li&gt;向天再借五百年&lt;/li&gt;
+  &lt;li&gt;千年泪&lt;/li&gt;
+  &lt;li&gt;咱们屯里的人&lt;/li&gt;
+  &lt;li&gt;唐宋元明清&lt;/li&gt;
+  &lt;li&gt;想起 《喜气洋洋猪八戒》&lt;/li&gt;
+  &lt;li&gt;一吻天荒&lt;/li&gt;
+  &lt;li&gt;依然爱你&lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
