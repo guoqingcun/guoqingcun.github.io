@@ -8,9 +8,412 @@ In spare time, I like reading book, surfing internet, watching movie.
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 16 Apr 2018 18:01:27 +0800</pubDate>
-    <lastBuildDate>Mon, 16 Apr 2018 18:01:27 +0800</lastBuildDate>
+    <pubDate>Wed, 18 Apr 2018 16:00:15 +0800</pubDate>
+    <lastBuildDate>Wed, 18 Apr 2018 16:00:15 +0800</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
+    
+      <item>
+        <title>组织结构的三种类型</title>
+        <description>&lt;hr /&gt;
+
+&lt;h2 id=&quot;职能型&quot;&gt;职能型&lt;/h2&gt;
+&lt;p&gt;职能型组织结构是目前最普遍的组织形式。它是金字塔型组织形式。&lt;/p&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+	&lt;img src=&quot;/images/company/architecture/project/zhineng.jpg&quot; title=&quot;职能型组织结构&quot; /&gt;
+   &lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;职能型组织结构是一种常规的线型组织结构。采用这种组织结构时，项目是以部门为主体来承担项目的,一个项目由一个或者多个部门承担，一个部门也可能承担多个项目,此种类型结构善长单部门完成一个项目&lt;/p&gt;
+
+&lt;h3 id=&quot;优点&quot;&gt;优点：&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;以职能部门作为承担项目任务的主体，可以充分发挥职能部门的资源集中优势，有利于保障项目需要资源的供给和项目可交付成果的质量，在人员的使用上具有较大的灵活性&lt;/li&gt;
+  &lt;li&gt;职能部门内部的技术专家可以被该部门承担的不同项目共享，节约人力，减少了资源浪费&lt;/li&gt;
+  &lt;li&gt;同一职能部门内部的专业人员便于交流、相互支援，对创造性地解决技术问题很有帮助。同部门的专业人员易于交流知识和经验，项目成员在事业上具有连续性和保障性&lt;/li&gt;
+  &lt;li&gt;项目成员可以将完成项目和完成本部门的职能工作融为一体&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;缺点&quot;&gt;缺点：&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;客户利益和职能部门的利益经常发生冲突，职能部门会为本部门的利益而忽视客户的需求，只集中于本职能部门的活动，项目及客户的利益往往得不到优先考虑&lt;/li&gt;
+  &lt;li&gt;当项目需要多个职能部门共同完成，或者一个职能部门内部有多个项目需要完成时，资源的平衡就会出现问题&lt;/li&gt;
+  &lt;li&gt;当项目需要由多个部门共同完成时，权力分割不利于各职能部门之间的沟通交流、团结协作。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;项目型&quot;&gt;项目型&lt;/h2&gt;
+
+&lt;p&gt;项目型组织结构中的部门完全是按照项目进行设置，是一种单目标的垂直组织方式。&lt;/p&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+	&lt;img src=&quot;/images/company/architecture/project/xiangmu.jpg&quot; title=&quot;项目型组织结构&quot; /&gt;
+   &lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;在项目型组织结构中，项目经理有足够的权力控制项目的资源。项目成员向唯一领导汇报。这种组织结构适用于开拓性等风险比较大的项目或进度、成本、质量等指标有严格要求的项目，不适合人才匮乏或规模小的企业。&lt;/p&gt;
+
+&lt;h3 id=&quot;优点-1&quot;&gt;优点：&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;项目经理对项目可以全权负责，可以根据项目需要随意调动项目的内部资源或者外部资源&lt;/li&gt;
+  &lt;li&gt;项目型组织的目标单一，完全以项目为中心安排工作，决策的速度得以加快，能够对客户的要求作出及时响应，项目组团队精神得以充分发挥，有利于项目的顺利完成&lt;/li&gt;
+  &lt;li&gt;项目经理对项目成员有全部权利，项目成员只对项目经理负责，避免了职能型项目组织下项目成员处于多重领导、无所适从的局面，项目经理是项目真正、唯一的领导者&lt;/li&gt;
+  &lt;li&gt;组织结构简单，易于操作。项目成员直接属于同一部门，彼此之间的沟通交流简洁、快速，提高了沟通效率，同时加快了决策速度&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;缺点-1&quot;&gt;缺点：&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;对于每一个项目型组织，资源不能共享，即使某个项目的专用资源闲置，也无法应用于另外一个同时进行的类似项目，人员、设施、设备重复配置会造成一定程度的资源浪费&lt;/li&gt;
+  &lt;li&gt;公司里各个独立的项目型组织处于相对封闭的环境之中，公司的宏观政策、方针很难做到完全、真正的贯彻实施，可能会影响公司的长远发展&lt;/li&gt;
+  &lt;li&gt;在项目完成以后，项目型组织中的项目成员或者被派到另一个项目中去，或者被解雇，对于项目成员来说，缺乏一种事业上的连续性和安全感&lt;/li&gt;
+  &lt;li&gt;项目之间处于一种条块分隔状态，项目之间缺乏信息交流，不同的项目组很难共享知识和经验，项目成员的工作会出现忙闲不均的现象&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;矩阵型&quot;&gt;矩阵型&lt;/h2&gt;
+
+&lt;p&gt;矩阵型组织结构是职能型组织结构和项目型组织结构的混合体，既具有职能型组织的特征，又具有项目型组织结构的特征，如图&lt;/p&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+	&lt;img src=&quot;/images/company/architecture/project/juzheng.jpg&quot; title=&quot;矩阵型组织结构&quot; /&gt;
+   &lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;它是根据项目的需要，从不同的部门中选择合适的项目人员组成一个临时项目组，项目结束之后，这个项目组也就解散了，然后各个成员回到各自原来的部门，团队的成员需要向不同的经理汇报工作。这种组织结构的关键是项目经理需要具备好的谈判和沟通技能。加强横向联结，充分整合资源，实现信息共享，提高反应速度等方面的优势恰恰符合当前的形势要求。这种组织结构适用于管理规范、分工明确的公司或者跨职能部门的项目。&lt;/p&gt;
+
+&lt;h3 id=&quot;优点-2&quot;&gt;优点：&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;专职的项目经理负责整个项目，以项目为中心，能迅速解决问题。在最短的时间内调配人才，组成一个团队，把不同职能的人才集中在一起&lt;/li&gt;
+  &lt;li&gt;多个项目可以共享各个职能部门的资源。在矩阵管理中，人力资源得到了更有效的利用，减少了人员冗余&lt;/li&gt;
+  &lt;li&gt;既有利于项目目标的实现，也有利于公司目标方针的贯彻&lt;/li&gt;
+  &lt;li&gt;项目成员的顾虑减少了，不用担心被解散，而且他们能有更多机会接触自己企业的不同部门&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;缺点-2&quot;&gt;缺点：&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;资源共享可能引起项目之间的冲突&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Wed, 18 Apr 2018 14:00:17 +0800</pubDate>
+        <link>http://localhost:4000/company-architecture-project/</link>
+        <guid isPermaLink="true">http://localhost:4000/company-architecture-project/</guid>
+        
+        
+        <category>公司</category>
+        
+      </item>
+    
+      <item>
+        <title>一篇文章读懂互联网公司组织架构</title>
+        <description>&lt;hr /&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+&lt;img src=&quot;/images/company/base/architecture/0.jpg&quot; title=&quot;聊一聊架构&quot; /&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;每个公司不同的成长历史、不同的业务架构和不同的管理风格，造就了它们不同的公司架构，今天就让我们来分析一下目前比较常见的互联网公司架构模式及各岗位主要职能要求。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div align=&quot;center&quot;&gt;
+&lt;img src=&quot;/images/company/base/architecture/1.png&quot; title=&quot;科技公司组织结构图&quot; /&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;
+通常情况下，各公司会根据自己的情况，采用不同的组织架构。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;扁平式的组织架构，就是各职能单位各自独立，彼此之间通过管理人员与部门员工的频繁沟通、呼应，来解决各种问题；&lt;/li&gt;
+  &lt;li&gt;项目组式的组织架构，以项目为中心，将项目所需的人员集中在一个Team中；&lt;/li&gt;
+  &lt;li&gt;混合式的组织架构，一部分采用项目组式管理，而另一部分则采用扁平化管理。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;b&gt;但无论组织架构如何调整，事儿还是那些事儿，都得有人来做。&lt;/b&gt;&lt;/p&gt;
+
+&lt;p&gt;公司创业初期，人员规模可能比较小，时常出现一人身兼数职的情况。但是人少并不意味着就可以“将就”，发展初期制定一个比较合理的公司组织架构，部分暂时无人或兼任的职位可以暂时空出，以备后续按岗位来招人填充。一个好的公司架构，对创业公司的后续发展受益良多。&lt;/p&gt;
+
+&lt;p&gt;随着人员规模的扩大，公司要想继续持续发展，必然还会产生改变组织结构的需求。&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;&lt;i&gt;组织结构是为公司发展服务的&lt;i&gt;，各个时期产生的组织结构都是为了适应公司发展的需要。&lt;b&gt;&lt;/b&gt;&lt;/i&gt;&lt;/i&gt;&lt;/b&gt;&lt;/p&gt;
+
+&lt;p&gt;让我们先来看看通常一家互联网公司会有哪些职位：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;管理职位：CEO、COO、CFO、CTO、CIO等&lt;/li&gt;
+  &lt;li&gt;产品条线：产品经理、产品助理、设计师等&lt;/li&gt;
+  &lt;li&gt;运营条线：产品运营、活动策划、会员运营、数据运营、（新）媒体运营、内容策划、编辑等&lt;/li&gt;
+  &lt;li&gt;技术条线：架构师、前端工程师、开发工程师、测试工程师、运维工程师等&lt;/li&gt;
+  &lt;li&gt;市场条线：渠道、推广、商务合作等&lt;/li&gt;
+  &lt;li&gt;行政条线：HR、行政等&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;对于大公司来说，专人专岗，需要更多的“专业型人才”，而对于小公司来说，可能需要更多的是“复合型人才”，以下是我们一个创业公司的人员架构：&lt;/p&gt;
+
+&lt;h2 id=&quot;产品部门&quot;&gt;产品部门&lt;/h2&gt;
+
+&lt;h3 id=&quot;产品经理&quot;&gt;产品经理&lt;/h3&gt;
+
+&lt;p&gt;不是随便一个什么人就可以去做「产品经理」，他需要对用户理解，对生活了解，是需要阅历和沉淀的职位。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div align=&quot;center&quot;&gt;
+&lt;img src=&quot;/images/company/base/architecture/2.jpg&quot; /&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;而产品经理这个角色，在大公司和小公司的职责是完全不同的。&lt;/p&gt;
+
+&lt;p&gt;在大公司，会多出很多事务性的工作，产品文档、数据流程等这些事务性的工作就会交由「产品助理」来完成。&lt;/p&gt;
+
+&lt;p&gt;在小公司很可能并不独立的存在「产品经理」职位，而往往是由设计、开发等职位兼顾的。&lt;/p&gt;
+
+&lt;p&gt;「产品经理」的具体职能是落在对用户需求的深刻理解上的，并且通过逻辑思维和体验优化来让客户的需求得到满足。&lt;/p&gt;
+
+&lt;p&gt;在这个前提下，「产品经理」的职位就会要求：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;同理心，对用户理解&lt;/li&gt;
+  &lt;li&gt;专注度，对产品要深得下去&lt;/li&gt;
+  &lt;li&gt;感受力，对产品的体验有追求，但更能敏感的发掘到需要增强补足的可能性&lt;/li&gt;
+  &lt;li&gt;沟通与抗压能力&lt;/li&gt;
+  &lt;li&gt;逻辑思维能力&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;产品助理&quot;&gt;产品助理&lt;/h3&gt;
+
+&lt;p&gt;通常「产品助理」是一个在大公司里才会出现的岗位。&lt;/p&gt;
+
+&lt;p&gt;这个职位设立的初衷，是解放产品经理，让产品经理从繁杂的会议、扯皮、文档写作中解放出来，专心做需求分析和产品设计。&lt;/p&gt;
+
+&lt;p&gt;如果你希望成为一个「产品助理」，你可能需要具备：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;较好的沟通能力&lt;/li&gt;
+  &lt;li&gt;较强的抗压能力&lt;/li&gt;
+  &lt;li&gt;灵活的头脑和快速反应能力&lt;/li&gt;
+  &lt;li&gt;勤快&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;如果你是应届毕业生，希望做产品工作，那么可以考虑一下从大公司的「产品助理」做起。&lt;/p&gt;
+
+&lt;p&gt;当然，如果你天赋异禀，我觉得直接做「产品经理」也挺好。&lt;/p&gt;
+
+&lt;p&gt;只是这种天赋异禀的人，毕竟少。&lt;/p&gt;
+
+&lt;h3 id=&quot;设计师&quot;&gt;设计师&lt;/h3&gt;
+
+&lt;p&gt;早些年间，是没有「设计师」这么高档的头衔的，就叫做「美工」。&lt;/p&gt;
+
+&lt;p&gt;后来，随着互联网的发达，对职位的职能有了非常细致的重新分配。&lt;/p&gt;
+
+&lt;p&gt;于是，有了各种「设计师」，UI、UE、交互、动画……甚至还有专门设计icon和Logo的。&lt;/p&gt;
+
+&lt;p&gt;所以，对于「设计师」这样的职位，大家在投递之前，需要看清楚具体的业务职责。&lt;/p&gt;
+
+&lt;p&gt;对于设计师来说，有几个能力很重要：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;审美，不知道什么是好看的，不是作死么&lt;/li&gt;
+  &lt;li&gt;至少掌握一种介质的设计效果，平面设计和网页设计就真的是不一样，PC端的设计和移动应用的设计也就是不一样。都能掌握的，不多。&lt;/li&gt;
+  &lt;li&gt;时间观念。&lt;/li&gt;
+  &lt;li&gt;对精品的追求。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;运营部门&quot;&gt;运营部门&lt;/h2&gt;
+
+&lt;p&gt;运营是块砖，哪里需要哪里搬。&lt;/p&gt;
+
+&lt;h3 id=&quot;产品运营&quot;&gt;产品运营&lt;/h3&gt;
+
+&lt;p&gt;这个工作主要是围绕产品开展运营工作。&lt;/p&gt;
+
+&lt;p&gt;简单概括主要工作内容：拉新、留存、促活（变现）。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div align=&quot;center&quot;&gt;
+&lt;img src=&quot;/images/company/base/architecture/3.png&quot; title=&quot;产品、渠道和用户的关系图&quot; /&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;活动策划&quot;&gt;活动策划&lt;/h3&gt;
+
+&lt;p&gt;这个主要就是做活动，属于专门的岗位。&lt;/p&gt;
+
+&lt;h3 id=&quot;会员运营&quot;&gt;会员运营&lt;/h3&gt;
+
+&lt;p&gt;这个职位在涉及用户消费忠诚度的行业方面出现比较多，主要是维系会员用户，通过会员权益建设和客户关怀设计留住用户并促使其长期的活跃与消费。&lt;/p&gt;
+
+&lt;h3 id=&quot;数据运营&quot;&gt;数据运营&lt;/h3&gt;
+
+&lt;p&gt;这个职位比较新，收集市场、用户等方面的数据，对公司产品的运营数据进行分析，发现问题，提出针对性方案。&lt;/p&gt;
+
+&lt;h3 id=&quot;新媒体运营&quot;&gt;(新)媒体运营&lt;/h3&gt;
+
+&lt;p&gt;多见于通过在各种媒体平台上的内容建设去引流或者维系用户。&lt;/p&gt;
+
+&lt;h2 id=&quot;内容策划编辑&quot;&gt;内容策划、编辑&lt;/h2&gt;
+&lt;p&gt;这两个职位的差异不大，都是创造、审核内容，将优质的内容呈现给用户，并达到对应的运营目标。&lt;/p&gt;
+
+&lt;p&gt;运营岗位通常共性的要求有：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;头脑灵活，有创意。能够创造出精品内容，或者设计出有意思的活动。&lt;/li&gt;
+  &lt;li&gt;对数据非常敏感。能够发现数据波动，并找出数据波动的原因，从运营端进行各种调整与优化。&lt;/li&gt;
+  &lt;li&gt;较强的沟通能力。能够通过沟通去推进并解决问题。&lt;/li&gt;
+  &lt;li&gt;执行力。说到、做到、做好。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;技术&quot;&gt;技术&lt;/h2&gt;
+
+&lt;p&gt;技术岗位的要求就比较复杂了。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div align=&quot;center&quot;&gt;
+&lt;img src=&quot;/images/company/base/architecture/4.jpg&quot; /&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;架构师&quot;&gt;架构师&lt;/h3&gt;
+
+&lt;p&gt;公司产品技术方面的总设计师，通常需要多年的开发经验。&lt;/p&gt;
+
+&lt;p&gt;要求能够设计系统架构，并保证满足架构的稳定性、可扩展性、性能优越等多项指标的可用性与优越性。&lt;/p&gt;
+
+&lt;p&gt;一般的毕业生是不可能拿到这个职位的Offer的，多年经验的开发工程师也未必能够拿到这个职位。&lt;/p&gt;
+
+&lt;h3 id=&quot;前端工程师&quot;&gt;前端工程师&lt;/h3&gt;
+
+&lt;p&gt;与设计师和产品联系非常紧密，确保前端的可用性与易用性。&lt;/p&gt;
+
+&lt;h3 id=&quot;开发工程师&quot;&gt;开发工程师&lt;/h3&gt;
+
+&lt;p&gt;实现功能开发，让功能可用、易用，「码农」是最直接的描述，写代码的牛人或者普通人。&lt;/p&gt;
+
+&lt;h3 id=&quot;测试工程师&quot;&gt;测试工程师&lt;/h3&gt;
+
+&lt;p&gt;不管一家公司的规模多大，测试的工作都必须有人来干，在规模中等及以上的公司里，会有专门的测试工程师，他们就是专门从事开发完成后的测试工作，找出Bug，写出报告，负责回归，确保上线前产品没有影响使用的重大Bug，甚至零Bug状态上线，要有各种浏览器、虚拟机，抽屉里有各种各样的终端设备，兼容性测试和功能测试一样重要。&lt;/p&gt;
+
+&lt;h3 id=&quot;运维工程师&quot;&gt;运维工程师&lt;/h3&gt;
+
+&lt;p&gt;确保后台不出问题，确保服务器、网络出现了问题能够及时的修复，等等。服务器、带宽够不够，一个大活动需要备机，都要找他们。&lt;/p&gt;
+
+&lt;p&gt;当然啦，你说公司装电脑，嗯，那是IT的事儿了，多年前叫「网管」。他们可以是运维的一部分，也可以归于行政职能。&lt;/p&gt;
+
+&lt;p&gt;那么，对于技术人员来说，可能通用的要求是这样：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;懂代码、懂系统、懂业务&lt;/li&gt;
+  &lt;li&gt;抗压能力&lt;/li&gt;
+  &lt;li&gt;沟通能力&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;如果代码写的够快够好，那么其他的都可以降低标准，甚至忽略。&lt;/p&gt;
+
+&lt;h2 id=&quot;市场&quot;&gt;市场&lt;/h2&gt;
+
+&lt;p&gt;市场这类职能人员，在一些公司会和运营组合并，在另一些公司则会独立。&lt;/p&gt;
+
+&lt;p&gt;但还是那句话，事儿还是那些事儿。&lt;/p&gt;
+
+&lt;p&gt;他们和运营人员的区别在于：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;市场更多考虑的是品牌、传播、导流，而运营更多考虑的是留存、活跃、付费。&lt;/li&gt;
+  &lt;li&gt;指标不同，导向不同，精力分配不同，做事情的对象与深度不同。&lt;/li&gt;
+  &lt;li&gt;对于市场人员来说，更重要的是了解市场动态、掌握竞品情况、引入和维系合作方，并通过媒体、公关等方式，确保公司与产品的口碑。当然，在很多大的公司，媒体、公关的活儿是由专门的公关部来处理的，这是另一个话题。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在市场职能下，也会有很多细分：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;渠道，主要是维系各类渠道，确保能够拿到渠道资源。&lt;/li&gt;
+  &lt;li&gt;推广，这个词儿比较宽泛，看公司如何定位「推广」的职责与范围，如果是App，那么渠道和推广可能是同一个职能，甚至合并起来的职位；如果是PC端，那么推广可能还需要考量广告投放、ROI等相关事项。&lt;/li&gt;
+  &lt;li&gt;商务合作，主要是去找寻外部可以合作的商户和资源，达成合作，可能涉及联合活动之类的业务。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;市场类职能的共性要求是：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;沟通能力。&lt;/li&gt;
+  &lt;li&gt;客户保留的能力。&lt;/li&gt;
+  &lt;li&gt;理解力，必须要充分了解产品。&lt;/li&gt;
+  &lt;li&gt;执行力。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;行政&quot;&gt;行政&lt;/h2&gt;
+
+&lt;h3 id=&quot;行政方向&quot;&gt;行政方向&lt;/h3&gt;
+
+&lt;p&gt;「行政」作为和「人事」、「财务」并驾齐驱的公司三大支持部门，对公司的业务发展起着重大的作用。&lt;/p&gt;
+
+&lt;p&gt;企业的日常经营过程当中，会产生许多事务性工作，比如：办理各种证件执照、租赁办公场所、装修装饰、软硬件维护、出入管理、物品采购等，这些事务让研发、生产和销售人员兼职来做不仅机会成本较高，还会造成重复工作，效率低下。
+为了解决这个问题，把这一类「杂七杂八」工作专门分工给一些人进行处理，这就是行政部的由来。&lt;/p&gt;
+
+&lt;p&gt;行政部门的具体工作可分为四大类：1、基础环境保障。2、业务流程保障。3、行为制度建设。4、综合事务管理。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;div align=&quot;center&quot;&gt;
+&lt;img src=&quot;/images/company/base/architecture/5.png&quot; /&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;人事方向&quot;&gt;人事方向&lt;/h3&gt;
+
+&lt;p&gt;华为在做一个重大决策的时候，往往会征询两个部门的意见，第一是财务部，第二就是人力资源部门。如果两个部门其中一个部门持否定意见，决策就会被否决。&lt;/p&gt;
+
+&lt;p&gt;人力资源管理在不同行业有不同的特点，一般来讲可以分为六个大方面：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;人力资源规划&lt;/li&gt;
+  &lt;li&gt;招聘与配置&lt;/li&gt;
+  &lt;li&gt;培训&lt;/li&gt;
+  &lt;li&gt;绩效管理&lt;/li&gt;
+  &lt;li&gt;薪酬福利管理&lt;/li&gt;
+  &lt;li&gt;劳动关系&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;我们国家现在大多数的企业人力资源往往处于比较初级，没有像国际上一样，上升到组织战略层次，发挥好应有的作用。&lt;/p&gt;
+
+&lt;p&gt;在一般企业，简而言之就四个字， 招、用、育、留。&lt;/p&gt;
+
+&lt;p&gt;招是招聘，要求用预算内的资源，找到胜任工作要求的人员。
+用是使用，关键在于要在发挥员工最大价值和维持员工满意度、忠诚度中间找到平衡点。
+育是培育，目标是双赢：一方面提高工作价值量；一方面有助于员工职业生涯发展。
+留是报酬，任务是以工作绩效为主要依据，计算管理员工的薪酬福利。以此来激励员工忠诚的 为企业服务。&lt;/p&gt;
+
+&lt;p&gt;理一下逻辑：一家创业型公司有了自己的「人力资源规划」，然后开始「招聘」，招进来的人要「培训」，同时要发「薪酬」，要处理社保，员工档案，岗位调动事宜「员工关系」，要让招进来的人少拿钱多干活「绩效考核」，这就是人力资源工作的意义。&lt;/p&gt;
+
+&lt;h3 id=&quot;财务方面&quot;&gt;财务方面&lt;/h3&gt;
+
+&lt;p&gt;大公司和小公司差异性太强，专业性也太强。才疏学浅就不班门弄斧了。&lt;/p&gt;
+
+&lt;p&gt;听过一个段子：&lt;/p&gt;
+
+&lt;p&gt;财务人就像一只西行的猴子，从决定走上财务西行的路开始，就必须戴上各种财务、税务、法律的紧箍咒。&lt;/p&gt;
+
+&lt;p&gt;一路上行人往往会以为财务人是稳定、轻松、自在的一场向西的旅行，一路上同事八戒对财务这个猴子，规定的这个不行，那个不可以，有太多的抱怨。财务猴子又总是被八戒同事告到师父那去受到无名的指责。&lt;/p&gt;
+
+&lt;p&gt;一路上财务这个猴子需要打理税务部门的通关文牒，其中免不了需要面对各种小鬼和妖怪。一路上财务猴子需要直面工商、税务、法院等各路怪兽。可谓九九八十一难。&lt;/p&gt;
+
+&lt;p&gt;可每当同事八戒在外面闯祸后，业务发生后，老板师父就会给财务说：悟空，你去摆平一下。&lt;/p&gt;
+
+&lt;p&gt;这一切在老板唐僧看来，不就是你财务猴子该干的吗？可是猴哥心里苦啊，为何不能事先给财务报备一下呢？为何我猴哥总是只能给各个部门造成的税务财务问题擦屁股呢？&lt;/p&gt;
+
+&lt;p&gt;在这条西行的财务之路上，财务人如带着紧箍咒的猴子，是一个灭火队长，是一个军师，是一个闷声做事的斗士。这条路的出路在哪？敢问路在何方，路在脚下。&lt;/p&gt;
+
+&lt;p&gt;转载：https://www.jianshu.com/p/671c876e74ef&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 18 Apr 2018 14:00:17 +0800</pubDate>
+        <link>http://localhost:4000/company-architecture-base/</link>
+        <guid isPermaLink="true">http://localhost:4000/company-architecture-base/</guid>
+        
+        
+        <category>公司</category>
+        
+      </item>
     
       <item>
         <title>天津之行</title>
