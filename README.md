@@ -1,7 +1,13 @@
-# [murmur](http://songroger.github.io/murmur)
+<hr>
+  My name is Qingcun Guo(郭清存). You can call me Grace. I was born in 1985s.
 
-![preview](preview.png)
+  I am an IT developer focusing on web technology. Now I am employed by 24xiaomai.com as an java engineer.
 
-This is another simple theme for [jekyll](http://jekyllrb.com/).
-Try to edit `_config.yml` first before use it.
-Replace all the blabla configurations(like "avatar", "about", "title", etc.) to your owns.
+  In spare time, I like reading book, surfing internet, watching movie. 
+
+## 2008-09
+<hr>
+
+<div align="center">
+    <img src="/images/aboutme/me.jpg">  
+</div>
