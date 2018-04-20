@@ -32,7 +32,7 @@ kramdown:
 # before deploy your webpage
 enable_comment: true
 #disqus_account: guoqingcun-disqus-com
-intensedebate_comments: true
+#intensedebate_comments: true
 
 plugins: ['jekyll-paginate']
 # Pagination
