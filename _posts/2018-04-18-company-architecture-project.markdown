@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "组织结构的三种类型"
-date:   2018-04-18 14:00:17 +0800
+date:   2018-04-18 15:00:17 +0800
 categories: 公司
 location: 
 description: 创业公司的架构
