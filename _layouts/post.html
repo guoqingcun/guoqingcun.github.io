@@ -70,3 +70,18 @@ var duoshuoQuery = {short_name:"songroger"};
   </script> -->
 <!-- 多说公共JS代码 end -->
 {% endif %}
+
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+    owner: 'guoqingcun',
+    repo: 'guoqingcun.github.io',
+    oauth: {
+        client_id: 'b808701aafa601b6271d',
+        client_secret: 'febe7d2400b04f71c3f33b49d4b85a2564c82e1c',
+    },
+});
+gitment.render('gitmentContainer');
+</script>
