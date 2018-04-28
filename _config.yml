@@ -31,9 +31,10 @@ kramdown:
 # If U enable the comment, edit disqus or duoshuo account
 # before deploy your webpage
 enable_comment: true
-disqus_account: guoqingcun-disqus-com
+#disqus_account: guoqingcun-disqus-com
+#intensedebate_comments: true
 
-gems: ['jekyll-paginate']
+plugins: ['jekyll-paginate']
 # Pagination
 paginate: 5
 paginate_path: /archive/page:num
