@@ -8,9 +8,93 @@ In spare time, I like reading book, surfing internet, watching movie.
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 18 Apr 2018 16:14:29 +0800</pubDate>
-    <lastBuildDate>Wed, 18 Apr 2018 16:14:29 +0800</lastBuildDate>
+    <pubDate>Sat, 28 Apr 2018 17:54:48 +0800</pubDate>
+    <lastBuildDate>Sat, 28 Apr 2018 17:54:48 +0800</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
+    
+      <item>
+        <title>interface是否继承自Object对象</title>
+        <description>&lt;hr /&gt;
+
+&lt;h3 id=&quot;interface是否继承自object对象&quot;&gt;interface是否继承自Object对象?&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;答案:NO，接口和类没有公共的根元素
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;为什么interface可以调用object中的方法&quot;&gt;为什么interface可以调用object中的方法？&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;答案:接口中隐式的实现了object中的方法.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The members of an interface are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Those members declared in the interface.&lt;/li&gt;
+  &lt;li&gt;Those members inherited from direct superinterfaces.&lt;/li&gt;
+  &lt;li&gt;If an interface has no direct superinterfaces, then the interface implicitly declares a public abstract member method m with signature s, return type r, and throws clause t corresponding to each public instance method m with signature s, return type r, and throws clause t declared in Object, unless a method with the same signature, same return type, and a compatible throws clause is explicitly declared by the interface.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;从字节码上看是存在歧义&quot;&gt;从字节码上看是存在歧义&lt;/h3&gt;
+
+&lt;p&gt;举例说明，写一个空类，空接口，如下&lt;/p&gt;
+
+&lt;p&gt;空类&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TestC&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;字节码如下&lt;/p&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+&lt;img src=&quot;/images/java/base/interfaceAndClass/TestC.jpg&quot; title=&quot;空类字节码分析&quot; /&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;空接口&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TestI&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;字节码如下&lt;/p&gt;
+
+&lt;div align=&quot;center&quot;&gt;
+&lt;img src=&quot;/images/java/base/interfaceAndClass/TestI.jpg&quot; title=&quot;空接口字节码分析&quot; /&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;其中对于super_class的解析如下&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;For a class&lt;/b&gt;, the value of the super_class item either must be zero or
+must be a valid index into the constant_pool table. If the value of the
+super_class item is nonzero, the constant_pool entry at that index must
+be a CONSTANT_Class_info structure representing the direct superclass of the
+class defined by this class file. Neither the direct superclass nor any of its
+superclasses may have the ACC_FINAL flag set in the access_flags item of its
+ClassFile structure.
+If the value of the super_class item is zero, then this class file must represent
+the class Object, the only class or interface without a direct superclass.&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;For an interface&lt;/b&gt;, the value of the super_class item must always be a valid
+index into the constant_pool table. The constant_pool entry at that index
+must be a CONSTANT_Class_info structure representing the class Object.&lt;/p&gt;
+
+&lt;p&gt;也就是说super_class并不能说明interface继承自Object&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 28 Apr 2018 17:00:17 +0800</pubDate>
+        <link>http://localhost:4000/java-base-interface-extend-object/</link>
+        <guid isPermaLink="true">http://localhost:4000/java-base-interface-extend-object/</guid>
+        
+        
+        <category>公司</category>
+        
+      </item>
     
       <item>
         <title>组织结构的三种类型</title>
