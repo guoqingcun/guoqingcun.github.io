@@ -45,7 +45,7 @@ public class TestC {
 
 ``` java
 
-public class TestI {
+public interface TestI {
 
 }
 
