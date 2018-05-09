@@ -8,9 +8,96 @@ In spare time, I like reading book, surfing internet, watching movie.
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 02 May 2018 21:07:03 +0800</pubDate>
-    <lastBuildDate>Wed, 02 May 2018 21:07:03 +0800</lastBuildDate>
+    <pubDate>Thu, 10 May 2018 00:26:58 +0800</pubDate>
+    <lastBuildDate>Thu, 10 May 2018 00:26:58 +0800</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
+    
+      <item>
+        <title>记一次OOM：unable to create new native thread</title>
+        <description>&lt;hr /&gt;
+
+&lt;h3 id=&quot;virtualmachineerror&quot;&gt;VirtualMachineError&lt;/h3&gt;
+&lt;p&gt;在进入到本文主题之前，我们先了解下Java虚拟机的的error类:VirtualMachineError。&lt;/p&gt;
+
+&lt;p&gt;VirtualMachineError是在Java虚拟机损坏或所需资源耗尽时抛出。而抛出的error具体类包括如下四种&lt;/p&gt;
+&lt;blockquote&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;InternalError:底层主机系统软件有利故障或硬件错误&lt;/li&gt;
+    &lt;li&gt;OutOfMemoryError:Java虚拟机耗尽虚拟内存或物理且GC不能回收足够的空间时的错误&lt;/li&gt;
+    &lt;li&gt;StackOverflowError:Java虚拟机耗尽了线程的堆栈空间，通常是由于程序执行无数次递归调用所至。&lt;/li&gt;
+    &lt;li&gt;UnknowError:发生异常或错误，但Java虚拟机无法得知实际的异常或错误。&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;如上四种皆是VirtualMachineError的子类&lt;/p&gt;
+
+&lt;h3 id=&quot;outofmemoryerror&quot;&gt;OutOfMemoryError&lt;/h3&gt;
+&lt;p&gt;本文主要说的是OOM(OutOfMemoryError)。首先让我们看看产生OOM(OutOfMemoryError)的几种情况。&lt;/p&gt;
+&lt;blockquote&gt;
+
+  &lt;ol&gt;
+    &lt;li&gt;java.lang.OutOfMemoryError:Java heap space&lt;/li&gt;
+    &lt;li&gt;java.lang.OutOfMemoryError:Perm space&lt;/li&gt;
+    &lt;li&gt;java.lang.OutOfMemoryError:unable to create new native thread&lt;/li&gt;
+    &lt;li&gt;java.lang.OutOfMemoryError:Gc overhead limit exceeded&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;第一种情况是由于程序申请更多堆空间,而堆空间不足导致&lt;/p&gt;
+
+&lt;p&gt;第二种情况是由于程序申请永久带空间，空间不足导致&lt;/p&gt;
+
+&lt;p&gt;第三种情况是由于创建线程数达到是所限的数量，无法创建新线程所至&lt;/p&gt;
+
+&lt;p&gt;第四种情况是由于是在并行或者并发回收器在GC回收时间过长、超过98%的时间用来做GC并且回收了不到2%的堆内存，然后抛出这种异常进行提前预警，用来避免内存过小造成应用不能正常工作。&lt;/p&gt;
+
+&lt;p&gt;扯了这么多，都是做为本文的引子，今天主要谈的是第三种情况&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;java.lang.OutOfMemoryError:unable to create new native thread&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;排差问题&quot;&gt;排差问题&lt;/h3&gt;
+&lt;p&gt;写本文的原因也是由于本人线上遇到此问题后决定做一个笔录。如前面所述，本错误是由于达到了最大线程数，无法创建新线程导致。那为什么不能生成新的线程呢?&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;具体原因如下两点&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;1、操作系统不能提供足够物理内存&lt;/li&gt;
+    &lt;li&gt;2、线程(linux下是轻量的进程数)已到操作系统设置的上限&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;第一种情况&quot;&gt;第一种情况：&lt;/h4&gt;
+&lt;p&gt;当我在日志文件中看到此OOM后，使用free -h查看了下系统内存情况.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[xxx@face-tomcat01 ~]# free -h
+             total       used       free     shared    buffers     cached
+Mem:          3.7G       3.6G       177M       184K       286M       1.4G
+-/+ buffers/cache:       1.9G       1.8G
+Swap:           0B         0B         0B
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;从上面输出可以得出，生产机器4G内存，使用了3个多G，剩余177M，操作系统cache使用1.4G。	操作系统cache使用的1.4G是用来缓存IO数据，进程内存不足时，可以释放出来优先分配给进程使用。
+一个线程默认为1M，也就是说还可以new出177个新线程。所以第一个错误原因可以排除掉。&lt;/p&gt;
+
+&lt;h4 id=&quot;第二种情况&quot;&gt;第二种情况：&lt;/h4&gt;
+&lt;p&gt;那让我们看看是不是第二种情况导致的问题.首先使用&lt;code class=&quot;highlighter-rouge&quot;&gt;ulimit -a&lt;/code&gt;查看系统对用户使用资源的限制：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;max user processes              (-u) 1024&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;如此说明允许用户最大使用&lt;code class=&quot;highlighter-rouge&quot;&gt;1024&lt;/code&gt;个进程。接下来我们看看jvm线程数的情况,
+使用&lt;code class=&quot;highlighter-rouge&quot;&gt;jstack pid &amp;gt; xxx.log&lt;/code&gt; 导出运行时线程数据。再用&lt;code class=&quot;highlighter-rouge&quot;&gt;grep &quot;Thread &quot; xxx.log | wc -l&lt;/code&gt; 统计线程数量为1014。线程数量一直在1024以下波动。&lt;/p&gt;
+
+&lt;p&gt;产生OOM的原因已经找到，具体代码上是哪里引起的，此处略，请在各自的xxx.log中找寻原因。&lt;/p&gt;
+</description>
+        <pubDate>Thu, 10 May 2018 00:24:17 +0800</pubDate>
+        <link>http://localhost:4000/java-excpetion-unable-create-newnativethread/</link>
+        <guid isPermaLink="true">http://localhost:4000/java-excpetion-unable-create-newnativethread/</guid>
+        
+        
+        <category>java</category>
+        
+      </item>
     
       <item>
         <title>interface是否继承自Object对象</title>
@@ -1861,23 +1948,6 @@ must be a CONSTANT_Class_info structure representing the class Object.&lt;/p&gt;
         
         
         <category>喜好</category>
-        
-      </item>
-    
-      <item>
-        <title>JVM调优</title>
-        <description>&lt;hr /&gt;
-
-&lt;iframe width=&quot;800&quot; height=&quot;500&quot; src=&quot;https://slideonline.com/presentation/17901-jvm-gc-2011-pdf&quot; scrollbars=&quot;no&quot; scrolling=&quot;no&quot; webkitallowfullscreen=&quot;&quot; mozallowfullscreen=&quot;&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;div&gt;View &lt;a href=&quot;https://slideonline.com/presentation/17901-jvm-gc-2011-pdf&quot;&gt;JVM_GC调优_2011技术年会_刘晶.pdf&lt;/a&gt;&lt;/div&gt;
-
-</description>
-        <pubDate>Mon, 26 Feb 2018 17:30:17 +0800</pubDate>
-        <link>http://localhost:4000/jvm/</link>
-        <guid isPermaLink="true">http://localhost:4000/jvm/</guid>
-        
-        
-        <category>jvm</category>
         
       </item>
     
