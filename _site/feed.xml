@@ -8,8 +8,8 @@ In spare time, I like reading book, surfing internet, watching movie.
 </description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 10 May 2018 11:35:28 +0800</pubDate>
-    <lastBuildDate>Thu, 10 May 2018 11:35:28 +0800</lastBuildDate>
+    <pubDate>Thu, 10 May 2018 16:14:05 +0800</pubDate>
+    <lastBuildDate>Thu, 10 May 2018 16:14:05 +0800</lastBuildDate>
     <generator>Jekyll v3.7.3</generator>
     
       <item>
@@ -193,7 +193,7 @@ must be a CONSTANT_Class_info structure representing the class Object.&lt;/p&gt;
         <guid isPermaLink="true">http://localhost:4000/java-base-interface-extend-object/</guid>
         
         
-        <category>公司</category>
+        <category>Java</category>
         
       </item>
     
@@ -758,7 +758,7 @@ must be a CONSTANT_Class_info structure representing the class Object.&lt;/p&gt;
         <guid isPermaLink="true">http://localhost:4000/travel-chain-tianjin/</guid>
         
         
-        <category>Java</category>
+        <category>喜好</category>
         
       </item>
     
@@ -891,7 +891,7 @@ must be a CONSTANT_Class_info structure representing the class Object.&lt;/p&gt;
         <guid isPermaLink="true">http://localhost:4000/mysql-index-failure/</guid>
         
         
-        <category>Java</category>
+        <category>数据库</category>
         
       </item>
     

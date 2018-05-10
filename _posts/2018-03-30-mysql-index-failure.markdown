@@ -2,7 +2,7 @@
 layout: post
 title:  "一次排查MYSQL索引失效的过程"
 date:   2018-03-30 10:16:17 +0800
-categories: Java
+categories: 数据库
 location: 
 description: 
 ---

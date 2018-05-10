@@ -10,7 +10,7 @@ title: Archive
         <a href="{{ post.url | prepend: site.baseurl }}" class="arch-title">{{ post.title }}</a>
         <time>{{ post.date | date:"%b.%d, %Y" }}</time>
       </li>
-      {% if post.description %}<div class="arch-desc">{{ post.description }}</div>{% endif %}
+      {% if post.categories %}<div class="arch-desc">{{ post.categories }}</div>{% endif %}
     </div>
   {% endfor %}
 </ul>

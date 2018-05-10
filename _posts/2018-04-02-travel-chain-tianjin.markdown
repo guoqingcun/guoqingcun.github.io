@@ -2,7 +2,7 @@
 layout: post
 title:  "天津之行"
 date:   2018-04-02 16:12:17 +0800
-categories: Java
+categories: 喜好
 location: 
 description: 
 ---
