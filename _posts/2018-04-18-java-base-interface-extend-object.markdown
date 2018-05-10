@@ -4,7 +4,7 @@ title:  "interface是否继承自Object对象"
 date:   2018-04-28 17:00:17 +0800
 categories: 公司
 location: 
-description: 创业公司的架构
+description: 
 ---
 ---
 
@@ -77,7 +77,8 @@ must be a CONSTANT_Class_info structure representing the class Object.
 也就是说super_class并不能说明interface继承自Object
 
 
-   
+>
+  <small>本文总阅读量<span id="busuanzi_value_page_pv"></span>次</small>   
 
 
 

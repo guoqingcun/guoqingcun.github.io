@@ -10,6 +10,9 @@ description:
 
 <iframe width="800" height="500" src="https://slideonline.com/presentation/17901-jvm-gc-2011-pdf" scrollbars="no" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe><div>View <a href="https://slideonline.com/presentation/17901-jvm-gc-2011-pdf">JVM_GC调优_2011技术年会_刘晶.pdf</a></div>
 
+>
+  <small>本文总阅读量<span id="busuanzi_value_page_pv"></span>次</small>
+
 
 
 

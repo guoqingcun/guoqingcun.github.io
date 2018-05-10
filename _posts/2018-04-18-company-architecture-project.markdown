@@ -79,7 +79,8 @@ description: 创业公司的架构
 
 - 资源共享可能引起项目之间的冲突
 
-
+>
+  <small>本文总阅读量<span id="busuanzi_value_page_pv"></span>次</small>
 
 
 

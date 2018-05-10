@@ -126,3 +126,6 @@ description:
 ### 回北京
 
 > 1小时30分的路程，睡了一路。辛苦了司机大神:王小勇，同司机聊天的:彭小辉,一路玩绝地逢生:Baby
+
+>
+  <small>本文总阅读量<span id="busuanzi_value_page_pv"></span>次</small>

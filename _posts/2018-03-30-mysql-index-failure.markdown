@@ -50,3 +50,6 @@ SQL无法走索引常见的有如下9种情况：
 - 其它语句逻辑原因
 
 ![王江勇](/images/people/jiangyong.jpg "王江勇")
+
+>
+  <small>本文总阅读量<span id="busuanzi_value_page_pv"></span>次</small>

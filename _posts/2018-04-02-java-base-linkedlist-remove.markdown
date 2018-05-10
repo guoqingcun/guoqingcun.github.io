@@ -49,3 +49,6 @@ LinkedList是实现list和Deque接口的双向链表且非线程安全。LinkedL
   public int indexOf(Object o)  
   public void add(int index, E element)
   {% endhighlight %}  
+  
+>
+  <small>本文总阅读量<span id="busuanzi_value_page_pv"></span>次</small>

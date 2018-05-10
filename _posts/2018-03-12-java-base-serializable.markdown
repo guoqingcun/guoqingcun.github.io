@@ -357,3 +357,6 @@ Java 对象序列化比大多数 Java 开发人员想象的更灵活，这使我
 幸运的是，像这样的编程妙招在 JVM 中随处可见。关键是要知道它们，在遇到难题的时候能用上它们。
 
 源文：https://www.ibm.com/developerworks/cn/java/j-5things1/index.html
+
+>
+  <small>本文总阅读量<span id="busuanzi_value_page_pv"></span>次</small>

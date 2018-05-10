@@ -295,3 +295,6 @@ RMI 技术是完全基于 Java 序列化技术的，服务器端接口调用所�
 
 
 源文：https://www.ibm.com/developerworks/cn/java/j-lo-serial/
+
+>
+  <small>本文总阅读量<span id="busuanzi_value_page_pv"></span>次</small>
