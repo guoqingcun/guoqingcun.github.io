@@ -1,14 +1,25 @@
 # Site configuration
+name: 郭清存随笔
+
 domain: "http://songroger.win"
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://songroger.github.io/" # the base hostname & protocol for your site
-permalink: /:title/
+url: "https://guoqingcun.github.io/" 
+# 分页
+permalink: /:year/:month/:day/:title.html
+paginate: 5
+paginate_path: "article/:num"
+
+# 转换
+markdown: kramdown
+highlighter: rouge
+excerpt_separator: <!--excerpt-->
+
 avatar: /images/icon.jpg
 about: http://7xof48.com1.z0.glb.clouddn.com/about.jpg
 favicon: /images/icon.jpg
 basecss: 
 # Theme specific configuration
-title: guoqingcun
+title: 郭清存随笔
 description: >
   My name is Qingcun Guo(郭清存). You can call me Grace. I was born in 1985s.
 
@@ -23,7 +34,7 @@ facebook_username: qingcun.guo
 instagram_username: guoqingcun
 linkedin_username: guoqingcun
 
-exclude: ['node_modules', 'gulpfile.js', 'package.json']
+exclude: ['open.bat','Gemfile','Gemfile.lock','Guardfile', 'gulpfile.js']
 
 kramdown:
   input: GFM
@@ -36,5 +47,27 @@ enable_comment: true
 
 plugins: ['jekyll-paginate']
 # Pagination
-paginate: 5
-paginate_path: /archive/page:num
+#paginate: 5
+#paginate_path: /archive/page:num
+
+# Collections
+collections:
+ common:
+  output: true
+  permalink: /:collection/:title
+ ui:
+  output: true
+  permalink: /:collection/:title
+ gulp:
+  output: true
+  permalink: /:collection/:title
+ record:
+  output: true
+  permalink: /:collection/:title
+ jvm:
+  output: true
+  permalink: /:collection/:title
+ category:
+  output: true
+  permalink: /:collection/:title
+safe: false

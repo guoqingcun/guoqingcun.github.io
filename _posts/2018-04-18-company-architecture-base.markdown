@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: article-detail
 title:  "一篇文章读懂互联网公司组织架构"
 date:   2018-04-18 14:00:17 +0800
 categories: 公司

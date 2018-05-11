@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: article-detail
 title:  "Java 序列化的高级认识"
 date:   2018-03-12 17:19:17 +0800
 categories: Java

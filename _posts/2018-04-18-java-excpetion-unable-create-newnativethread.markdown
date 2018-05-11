@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: article-detail
 title:  "记一次OOM：unable to create new native thread"
 date:   2018-05-10 00:24:17 +0800
 categories: java

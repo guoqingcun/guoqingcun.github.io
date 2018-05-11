@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: article-detail
 title:  "天津之行"
 date:   2018-04-02 16:12:17 +0800
 categories: 喜好

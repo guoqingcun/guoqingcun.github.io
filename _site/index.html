@@ -1,274 +1,282 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="no-js">
 <head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modern Blog V2</title>
+<meta name="description"
+	content="Modern-Blog A Elegant template for Jekyll" />
+<meta name="keywords" content="Modern, Blogging, Fun" />
+<meta name="author" content="Nadun" />
+<link rel="shortcut icon" href="/img/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/css/normalize.css" />
+<link rel="stylesheet" type="text/css"
+	href="/fonts/font-awesome/css/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="/css/body.css" />
+<link rel="stylesheet" type="text/css" href="/css/card.css" />
+<link rel="stylesheet" type="text/css" href="/css/pattern.css" />
+<link rel="stylesheet" type="text/css" href="/css/footer.css" />
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="author" content="songroger">
-
-  <title>guoqingcun</title>
-
-  <meta name="description" content="My name is Qingcun Guo(郭清存). You can call me Grace. I was born in 1985s.I am an IT developer focusing on web technology. Now I am employed by 24xiaomai.com as an java engineer.In spare time, I like reading book, surfing internet, watching movie. ">
-
-  <!-- Open graph data -->
-  <meta property="og:site_name" content="guoqingcun">
-  <meta property="og:title" content="guoqingcun">
-  <meta property="og:url" content="http://localhost:4000/">
-  <meta property="og:type" content="website">
-  <meta property="og:description" content="My name is Qingcun Guo(郭清存). You can call me Grace. I was born in 1985s.I am an IT developer focusing on web technology. Now I am employed by 24xiaomai.com as an java engineer.In spare time, I like reading book, surfing internet, watching movie. ">
-
-  <!-- Standard Stuff -->
-  <link rel="canonical" href="http://localhost:4000/"/>
-  <link rel="alternate" type="application/rss+xml" title="guoqingcun" href="http://localhost:4000/feed.xml"/>
-
-  <!-- Favicons -->
-  <link rel="shortcut icon" href="/images/icon.jpg">
-  <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-config" content="/assets/browserconfig.xml">
-  <meta name="theme-color" content="#ffffff">
-
-  <!-- Styles -->
-  
-    <style type="text/css">
-      ::selection{background:#1565c0;color:#fff;text-shadow:none}html{font-size:109.375%;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;font-smoothing:antialiased;text-size-adjust:100%;box-sizing:border-box}@media screen and (min-width:700px){html{font-size:125%}}@media screen and (min-width:1440px){html{font-size:140.625%}}*,:after,:before{margin:0;padding:0;box-sizing:inherit}body{color:#444;font-family:Georgia,Source Sans Pro,sans-serif;font-size:.9rem;line-height:1.6rem}img{display:block;max-width:100%;height:auto;border:0}a:active,a:hover,a:visited{color:#444;text-decoration:none}strong{font-weight:700}em{font-style:italic}a{background:transparent;color:#1565c0;text-decoration:none;cursor:pointer;word-wrap:break-word}a:active,a:focus,a:hover{outline:0;text-decoration:none}h1,h2,h3,h4,h5,h6,p{margin-bottom:.2rem}h1,h2,h3,h4,h5,h6{color:#000;font-weight:700;vertical-align:middle}h1:not(:first-child),h2:not(:first-child),h3:not(:first-child),h4:not(:first-child),h5:not(:first-child),h6:not(:first-child){margin-top:2.4rem}h1{font-size:2rem;line-height:3.2rem}h2{font-size:1.5rem;line-height:2.4rem}h3{font-size:1.17rem}h4{font-size:1rem}h5{font-size:.707rem}h6{font-size:.5rem}ol,ul{margin:0 0 1.6rem 1.6rem}ol ol,ol ul,ul ol,ul ul{margin:0 1.6rem}hr{display:block;height:1.6rem;border:0;box-shadow:inset 0 1px 0 #eee}blockquote{margin-bottom:1.6rem;padding:1.6rem;border-left:4px solid #e6e6e6;background:#f7f7f7}blockquote p{margin:0}.col{max-width:calc(700px + 1.6rem);margin:0 auto;padding:0 .8rem}@media screen and (min-width:1440px){.col{max-width:calc(1000px + 1.6rem)}}.header{display:flex;flex-wrap:wrap;justify-content:space-around;margin-bottom:2rem;box-shadow:0 1px 0 0 #eee}@media screen and (min-width:734px){.header{font-size:.75rem}}.header__logo{margin-bottom:0;font-size:1rem;font-weight:400;line-height:1.6rem}.header__logo img{display:initial;width:30px;height:30px;vertical-align:middle;border-radius:15px;opacity:1}.header__logo img:hover{opacity:.5;transition:all .5s ease-in}.header__logo a{color:#999;text-transform:uppercase}@media screen and (min-width:734px){.header__logo{font-size:.75rem}}.header__nav{display:flex;flex-wrap:wrap}.header__nav a{color:#444}.header__nav a:hover{color:#999;transition:all .5s ease-in}.header__link{padding:.8rem;color:#444;text-decoration:none;border-bottom:2px solid transparent;padding-bottom:1px}.header__link:hover{transition:all .5s ease-in;border-color:hsla(34,5%,70%,.7)}.header__link--logo{padding:.8rem;display:block}.header__link--logo:focus,.header__link--logo:hover{color:#444;transition:all .5s ease-in}.footer{margin-top:.5rem;padding:1.6rem 0;box-shadow:inset 0 1px 0 #eee}.footer .col{font-size:13px;text-align:center}.subscribe{color:#999;transition:all .25s ease-in}.subscribe:hover{color:#444;text-decoration:none}.blocks{display:flex;align-items:center;margin-bottom:.1rem}.blocks--space{justify-content:space-between}.block__item--mr{margin-right:.8rem}.blocks__item a{text-decoration:none;color:#999;border:3px solid rgba(0,0,0,.1);border-radius:20px;padding:1px 15px;font-family:Georgia,Microsoft YaHei,sans-serif}.blocks__item a:hover{color:#444;border-color:#999;transition:all .5s ease-in}.blocks__item .btn{box-shadow:inset 0 0 0 0 #1565c0}.article{margin-bottom:3rem;animation:itemshow .9s linear}.article__title{margin-bottom:.8rem}.article__title--single,.article__title a{font-family:Georgia,Microsoft YaHei,sans-serif}.article__title a{color:#444;transition:all .25s ease-in}.article__title a:hover{color:#999;text-decoration:none}.article__date{display:block;margin-bottom:.8rem;font-size:.7501rem}.cover{margin-bottom:.5rem}.cover img{width:100%}.article__more{color:#999;text-decoration:none}.article__more:hover{transition:all .5s ease-in;color:#444;text-decoration:none}.post-tags{text-align:right;text-decoration:none;font:italic 700 12px/30px Georgia,serif}.post-tags a{color:#999}.post-tags a:hover{color:#444;text-decoration:none}@-webkit-keyframes 'itemshow'{0%{top:-60px;opacity:0}33%{top:-40px;opacity:.2}66%{top:-20px;opacity:.6}to{top:0;opacity:1}}@keyframes 'itemshow'{0%{top:-60px;opacity:0}33%{top:-40px;opacity:.2}66%{top:-20px;opacity:.6}to{top:0;opacity:1}}.arch-item{margin-bottom:10px;animation:itemshow .9s linear}.arch-title{color:#444;font-size:20px;font-family:Georgia,Hiragino Sans GB,Microsoft YaHei,sans-serif;font-weight:700;padding-right:10px}.arch-title:hover{color:#999;transition:all .25s ease-in}time{font-size:15px;font-family:Optima,Helvetica Neue,sans-serif}.arch-desc,time{color:#999}code,pre{background:#f7f7f7;font-family:Source Code Pro,monospace;font-size:.847rem;overflow-x:auto;vertical-align:top}.highlight{margin-bottom:1.6rem;padding:.8rem;background:#f7f7f7;box-shadow:inset 0 0 0 1px #eee}.highlight .c{color:#998}.highlight .err{background-color:#e3d2d2;color:#a61717}.highlight .k,.highlight .o{font-weight:400}.highlight .cm{color:#998}.highlight .cp{color:#999;font-weight:400}.highlight .c1{color:#998}.highlight .cs{color:#999;font-weight:400}.highlight .gd{background-color:#fdd;color:#000}.highlight .gd .x{background-color:#faa;color:#000}.highlight .gr{color:#a00}.highlight .gh{color:#999}.highlight .gi{background-color:#dfd;color:#000}.highlight .gi .x{background-color:#afa;color:#000}.highlight .go{color:#888}.highlight .gp{color:#555}.highlight .gs{font-weight:400}.highlight .gu{color:#aaa}.highlight .gt{color:#a00}.highlight .kc,.highlight .kd,.highlight .kp,.highlight .kr,.highlight .kt{font-weight:400}.highlight .kt{color:#458}.highlight .m{color:#099}.highlight .s{color:#d14}.highlight .na{color:teal}.highlight .nb{color:#0086b3}.highlight .nc{color:#458;font-weight:400}.highlight .no{color:teal}.highlight .ni{color:purple}.highlight .ne,.highlight .nf{color:#900;font-weight:400}.highlight .nn{color:#555}.highlight .nt{color:navy}.highlight .nv{color:teal}.highlight .ow{font-weight:400}.highlight .w{color:#bbb}.highlight .mf,.highlight .mh,.highlight .mi,.highlight .mo{color:#099}.highlight .s2,.highlight .sb,.highlight .sc,.highlight .sd,.highlight .se,.highlight .sh,.highlight .si,.highlight .sx{color:#d14}.highlight .sr{color:#009926}.highlight .s1{color:#d14}.highlight .ss{color:#990073}.highlight .bp{color:#999}.highlight .vc,.highlight .vg,.highlight .vi{color:teal}.highlight .il{color:#099}.article_new{animation:itemshow .9s linear}
-}
-    </style>
-  
-
-
+<!--[if IE]> <script type="text/javascript" src="js/vendors/html5.min.js"></script> <![endif]-->
+<script>
+	if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+		var root = document.getElementsByTagName('html')[0];
+		root.setAttribute('class', 'ff');
+	}
+</script>
 </head>
+<body class="demo-1">
+	<div class="container">
+		<header class="codrops-header">
+			<h1>
+				 <span>随笔</span>
+			</h1>
+		</header>
+		<div class="content">
+			<!-- trianglify pattern container -->
+			<div class="pattern pattern--hidden"></div>
+			<!-- cards -->
+			<div class="wrapper">
+				<div class="card" data-id="/2015/04/25/workshop">
+					<div class="card__container card__container--closed">
+						<svg class="card__image" xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 500"
+							preserveAspectRatio="xMidYMid slice"> <defs> <clipPath
+								id="/2015/04/25/workshop-clip-path"> <circle
+								class="clip" cx="960" cy="250" r="992"></circle> </clipPath> </defs> <a href="/article"><image
+								clip-path="url(#/2015/04/25/workshop-clip-path)" width="1920"
+								height="1200" xlink:href="/img/f.jpg"></image> </a></svg>
+                            <div class="card__content">
+							<i class="card__btn-close fa fa-times"></i>
+							<div class="card__caption">
+								<h2 class="card__title">网络日志(Blog)</h2>
+								<p class="card__subtitle">时光机</p>
+							</div>
+							
+						</div>								
+					</div>
+				</div>				
+				
+				<div class="card" data-id="/2015/04/24/i-scream">
+					<div class="card__container card__container--closed">
+						<svg class="card__image" xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 500"
+							preserveAspectRatio="xMidYMid slice"> <defs> <clipPath
+								id="/2015/04/24/i-scream-clip-path"> <circle
+								class="clip" cx="960" cy="250" r="992"></circle> </clipPath> </defs> <image
+								clip-path="url(#/2015/04/24/i-scream-clip-path)" width="1920"
+								height="1200" xlink:href="/img/e.jpg"></image> </svg>
+						<div class="card__content">
+							<i class="card__btn-close fa fa-times"></i>
+							<div class="card__caption">
+								<h2 class="card__title">Hobby</h2>
+								<p class="card__subtitle">My interest</p>
+							</div>
+							<div class="card__copy">
+								<div class="meta">
+									<img class="meta__avatar" src="/images/icon.jpg" /> <span
+										class="meta__author">GuoQingcun</span> <span class="meta__date">2018-05-11</span>
+								</div>		
+                                <h3 id="dolor-sit-amet">喜欢的那些事</h3>
+								<p>看电影，听音乐</p>
+								<h3 id="aliquam-suscipit">喜爱的国外电影</h3>
+								<p>
+								泰坦尼克号
+,								罗马假日
+,								诺丁山 
+,								楚门的世界
+,								肖申克的救赎
+,								忠犬八公的故事（侄女推荐）
+,								黑鹰坠落
+,								我的野蛮女友
+,								兰戈
+,								飞屋环游记
+,								辛德勒的名单
+,								勇敢的心
+,								遗愿清单
+,								驯龙高手
+,								驯龙高手2
+,								巴霍巴利王（上）
+,								末代皇帝
+,								拯救大兵瑞恩
+,								超能陆战队
+,								阿甘正传
+,								少年派的奇幻漂流
+,								阿凡达
+,								战狼2
+,								千与千寻
+,								摔跤吧！爸爸
+,								帕丁顿熊2
+,								红海行动有感.
+								</p>
+								<h3 id="aliquam-suscipit">喜爱的国内电影</h3>
+								<p>
+								  让子弹飞 Let The Bullets Fly (2010)
+								, 大话西游之月光宝盒 A Chinese Odyssey (1995)
+								, 大话西游之大圣娶亲 A Chinese Odyssey Part Two: Cinderella (1995)
+								, 倩女幽魂 A Chinese Ghost Story (1987)
+								, 东方不败（林青霞）
+								, 天若有情 A Moment of Romance (1990)
+								</p>
+								<h3 id="aliquam-suscipit">喜爱的音乐</h3>
+								<p>
+									  我们都一样Live)
+									, 有点甜《萌三国》网游主题曲《微微一笑很倾城》电视剧插曲国
+									, 礼佛药王寺
+									, 南无地藏王菩萨
+									, 我佛慈悲
+									, 菩提树下
+									, 愿做菩萨那朵莲回
+									, 菩萨座前
+									, 回忆总想哭
+									, 我们不一样
+									, 人生何处不相逢《最真的梦》粤语版
+									, 七秒钟的记忆回
+									, 情难枕
+									, 都选C《缝纫机乐队》电影推广曲
+									, 少年游
+									, Unti You
+									, Yesterday once more《生命因你动听》电影主题曲回
+									, 一次就好《夏洛特烦恼》
+									, 问情《戏说乾隆》电视剧片头曲
+									, 女儿情
+									, 沧海一声笑《笑傲江湖》
+									, 做个真的我《笑红尘》粤语版
+									, 神武女儿国
+									, 敢为天下先
+									, 花间辞 剑侠情缘三同人曲
+									, 水墨江南
+									, 清明樱花祭
+									, 逍遥叹《仙剑奇侠传》
+									, 轮回之境
+									, 芊芊
+									, 倾城一笑
+									, 你是我今天的依靠
+									, 年轮
+									, 寸缕
+									, 蜀绣
+									, 新贵妃醉酒
+									, 少年中国
+									, 乌云然
+									, 铁血丹心
+									, 庐州月
+									, 听《美人制造》
+									, 愿望《精武飞鸿》
+									, 雨花石
+									, 放了手就忘了我
+									, 我变了 我没变
+									, 怎样
+									, 中国好男儿
+									, 分手了别来打扰我
+									, 玉良缘《金玉良缘》电视剧片尾曲
+									, 月牙湾
+									, 画心《画皮》
+									, 曹操
+									, Susan说
+									, 红颜《荆轲传奇》
+									, 钗头凤
+									, 决别诗《少年杨家将》
+									, 黄种人《小鱼儿与花无缺》
+									, 霸王别姬
+									, 葬英雄
+									, 相思引《诛仙》
+									, 蝶恋花
+									, 等一分钟
+									, 老人与海
+									, 你的承诺
+									, 该死的温柔
+									, 秋天不回来
+									, 三生石 三生路
+									, 白狐
+									, 大城小爱
+									, 此生不换
+									, 向天再借五百年
+									, 千年泪
+									, 咱们屯里的人
+									, 唐宋元明清
+									, 想起 《喜气洋洋猪八戒》
+									, 一吻天荒
+									, 依然爱你
+									, when you say nothing at all
+									, 记得
+									, 梁祝
+									, 此生不换
+									, 偏爱
+									, 答应不爱你
+									, byebye
+									, 兰亭序
+									, 没有如果
+									, 不完整的旋律
+									, 日不落
+									, 传说
+									, 贞观长歌
+									, 布列瑟农
+									, the best lover
+									, 愿望
+									, 潇湘雨
 
-<!--访问量统计js-->
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<body>
-
-  <header class="header">
-
-    
-      <div class="header__logo">
-        <a href="/" class="header__link--logo">
-        <!-- <div class="spinner"></div> -->
-        <img src="/images/icon.jpg"></a>
-      </div>
-    
-
-    <nav class="header__nav" role="navigation">      
-      <a href="/archive/" class="header__link">Archive</a>
-      <a href="http://twitter.com/guoqingcun" class="header__link" target="_blank">Twitter</a>
-      <!-- <a href="http://github.com/guoqingcun" class="header__link" target="_blank">Github</a> -->
-      <a href="http://facebook.com/qingcun.guo" class="header__link" target="_blank">Facebook</a>
-      <a href="/about/" class="header__link">About</a>
-    </nav>
-  </header>
-
-  <main class="col">
-
-
-  
-    <!-- article -->
-    <article class="article_new">
-      <h3 class="article__title" style="display: inline-block;">
-        <a href="/java-excpetion-unable-create-newnativethread/">记一次OOM：unable to create new native thread</a>
-      </h3>
-      <time class="article__date" datetime="2018-05-10" style="display: inline-block; float: right;">May 10, 2018</time>
-	  <p class="article__excerpt"></p>
-	  <hr>
-	  <p></p>
-      <!--<p class="article__excerpt"><hr />
-
-</p>-->
-      <!--<a href="/java-excpetion-unable-create-newnativethread/" class="article__more">Read more »</a>-->
-    </article>
-    <!-- / article -->
-  
-    <!-- article -->
-    <article class="article_new">
-      <h3 class="article__title" style="display: inline-block;">
-        <a href="/java-base-interface-extend-object/">interface是否继承自Object对象</a>
-      </h3>
-      <time class="article__date" datetime="2018-04-28" style="display: inline-block; float: right;">Apr 28, 2018</time>
-	  <p class="article__excerpt"></p>
-	  <hr>
-	  <p></p>
-      <!--<p class="article__excerpt"><hr />
-
-</p>-->
-      <!--<a href="/java-base-interface-extend-object/" class="article__more">Read more »</a>-->
-    </article>
-    <!-- / article -->
-  
-    <!-- article -->
-    <article class="article_new">
-      <h3 class="article__title" style="display: inline-block;">
-        <a href="/company-architecture-project/">组织结构的三种类型</a>
-      </h3>
-      <time class="article__date" datetime="2018-04-18" style="display: inline-block; float: right;">Apr 18, 2018</time>
-	  <p class="article__excerpt"></p>
-	  <hr>
-	  <p></p>
-      <!--<p class="article__excerpt"><hr />
-
-</p>-->
-      <!--<a href="/company-architecture-project/" class="article__more">Read more »</a>-->
-    </article>
-    <!-- / article -->
-  
-    <!-- article -->
-    <article class="article_new">
-      <h3 class="article__title" style="display: inline-block;">
-        <a href="/company-architecture-base/">一篇文章读懂互联网公司组织架构</a>
-      </h3>
-      <time class="article__date" datetime="2018-04-18" style="display: inline-block; float: right;">Apr 18, 2018</time>
-	  <p class="article__excerpt"></p>
-	  <hr>
-	  <p></p>
-      <!--<p class="article__excerpt"><hr />
-
-</p>-->
-      <!--<a href="/company-architecture-base/" class="article__more">Read more »</a>-->
-    </article>
-    <!-- / article -->
-  
-    <!-- article -->
-    <article class="article_new">
-      <h3 class="article__title" style="display: inline-block;">
-        <a href="/travel-chain-tianjin/">天津之行</a>
-      </h3>
-      <time class="article__date" datetime="2018-04-02" style="display: inline-block; float: right;">Apr 2, 2018</time>
-	  <p class="article__excerpt"></p>
-	  <hr>
-	  <p></p>
-      <!--<p class="article__excerpt"><hr />
-
-</p>-->
-      <!--<a href="/travel-chain-tianjin/" class="article__more">Read more »</a>-->
-    </article>
-    <!-- / article -->
-  
-    <!-- article -->
-    <article class="article_new">
-      <h3 class="article__title" style="display: inline-block;">
-        <a href="/java-base-linkedlist-remove/">LinkedList remove方法陷阱</a>
-      </h3>
-      <time class="article__date" datetime="2018-04-02" style="display: inline-block; float: right;">Apr 2, 2018</time>
-	  <p class="article__excerpt"></p>
-	  <hr>
-	  <p></p>
-      <!--<p class="article__excerpt"><hr />
-
-</p>-->
-      <!--<a href="/java-base-linkedlist-remove/" class="article__more">Read more »</a>-->
-    </article>
-    <!-- / article -->
-  
-    <!-- article -->
-    <article class="article_new">
-      <h3 class="article__title" style="display: inline-block;">
-        <a href="/mysql-index-failure/">一次排查MYSQL索引失效的过程</a>
-      </h3>
-      <time class="article__date" datetime="2018-03-30" style="display: inline-block; float: right;">Mar 30, 2018</time>
-	  <p class="article__excerpt"></p>
-	  <hr>
-	  <p></p>
-      <!--<p class="article__excerpt"><hr />
-
-</p>-->
-      <!--<a href="/mysql-index-failure/" class="article__more">Read more »</a>-->
-    </article>
-    <!-- / article -->
-  
-    <!-- article -->
-    <article class="article_new">
-      <h3 class="article__title" style="display: inline-block;">
-        <a href="/java-base-serializable/">Java 对象序列化</a>
-      </h3>
-      <time class="article__date" datetime="2018-03-13" style="display: inline-block; float: right;">Mar 13, 2018</time>
-	  <p class="article__excerpt"></p>
-	  <hr>
-	  <p></p>
-      <!--<p class="article__excerpt"><hr />
-
-</p>-->
-      <!--<a href="/java-base-serializable/" class="article__more">Read more »</a>-->
-    </article>
-    <!-- / article -->
-  
-    <!-- article -->
-    <article class="article_new">
-      <h3 class="article__title" style="display: inline-block;">
-        <a href="/java-base-advanced-serializable/">Java 序列化的高级认识</a>
-      </h3>
-      <time class="article__date" datetime="2018-03-12" style="display: inline-block; float: right;">Mar 12, 2018</time>
-	  <p class="article__excerpt"></p>
-	  <hr>
-	  <p></p>
-      <!--<p class="article__excerpt"><hr />
-
-</p>-->
-      <!--<a href="/java-base-advanced-serializable/" class="article__more">Read more »</a>-->
-    </article>
-    <!-- / article -->
-  
-    <!-- article -->
-    <article class="article_new">
-      <h3 class="article__title" style="display: inline-block;">
-        <a href="/film/">喜欢的那些事</a>
-      </h3>
-      <time class="article__date" datetime="2018-03-06" style="display: inline-block; float: right;">Mar 6, 2018</time>
-	  <p class="article__excerpt"></p>
-	  <hr>
-	  <p></p>
-      <!--<p class="article__excerpt"><hr />
-
-</p>-->
-      <!--<a href="/film/" class="article__more">Read more »</a>-->
-    </article>
-    <!-- / article -->
-  
-    <!-- article -->
-    <article class="article_new">
-      <h3 class="article__title" style="display: inline-block;">
-        <a href="/jvm/">JVM调优</a>
-      </h3>
-      <time class="article__date" datetime="2018-02-26" style="display: inline-block; float: right;">Feb 26, 2018</time>
-	  <p class="article__excerpt"></p>
-	  <hr>
-	  <p></p>
-      <!--<p class="article__excerpt"><hr />
-
-</p>-->
-      <!--<a href="/jvm/" class="article__more">Read more »</a>-->
-    </article>
-    <!-- / article -->
-  
-
-
-    <nav class="blocks blocks--space">
-      <div class="blocks__item">
-        
-      </div>
-      <div class="blocks__item">
-        Page:  of 
-      </div>
-      <div class="blocks__item">
-        
-      </div>
-    </nav>
-
-
-<footer class="footer">
+								</p>					
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card" data-id="/2015/04/23/night-sky">
+					<div class="card__container card__container--closed">
+						<svg class="card__image" xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 500"
+							preserveAspectRatio="xMidYMid slice"> <defs> <clipPath
+								id="/2015/04/23/night-sky-clip-path"> <circle
+								class="clip" cx="960" cy="250" r="992"></circle> </clipPath> </defs> <image
+								clip-path="url(#/2015/04/23/night-sky-clip-path)" width="1920"
+								height="1200" xlink:href="/img/d.jpg"></image> </svg>
+						<div class="card__content">
+							<i class="card__btn-close fa fa-times"></i>
+							<div class="card__caption">
+								<h2 class="card__title">About Me</h2>
+								<p class="card__subtitle">IT developer focusing on web technology</p>
+							</div>
+							<div class="card__copy">
+								<div class="meta">
+									<img class="meta__avatar" src="/images/icon.jpg" /> <span
+										class="meta__author">GuoQingcun</span> <span class="meta__date">2018-05-11</span>
+								</div>
+								<h3 id="dolor-sit-amet">Intro</h3>
+								<p>My name is Qingcun Guo(郭清存). You can call me Grace. I was born in 1985s.
+                                   I am an IT developer focusing on web technology. Now I am employed by 24xiaomai.com as an java engineer. 
+                                   In spare time, I like reading book, surfing internet, watching movie. </p>
+								<h3 id="aliquam-suscipit">So On.</h3>
+								<p>
+									<div align="center">
+										<img src="/images/aboutme/me.jpg">  
+									</div>
+								</p>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<!-- /container -->
+	</div>
+	<footer class="footer">
 	<div class="col">
-		© 2014-2016 guoqingcun | <a href="/feed.xml" class="subscribe">RSS</a> 本站总访问量<span id="busuanzi_value_site_pv"></span>次
+		© 2014-2016 随笔 | 本站总访问量<span id="busuanzi_value_site_pv"></span>次
 	</div>
 	<div class="col">
 		本站访客数<span id="busuanzi_value_site_uv"></span>人次
 	</div>
 </footer>
-<script type="text/javascript">
-  //友盟统计
-  var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-  document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1260641879'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1260641879' type='text/javascript'%3E%3C/script%3E"));
-</script>
+	<!-- JS -->
+	<script src="/js/vendors/trianglify.min.js"></script>
+	<script src="/js/vendors/TweenMax.min.js"></script>
+	<script src="/js/vendors/ScrollToPlugin.min.js"></script>
+	<script src="/js/vendors/cash.min.js"></script>
+	<script src="/js/Card-circle.js"></script>
+	<script src="/js/modern-blog.js"></script>
+	<!--访问量统计js-->
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
 </html>

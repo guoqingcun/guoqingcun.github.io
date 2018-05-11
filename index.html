@@ -1,32 +1,282 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modern Blog V2</title>
+<meta name="description"
+	content="Modern-Blog A Elegant template for Jekyll" />
+<meta name="keywords" content="Modern, Blogging, Fun" />
+<meta name="author" content="Nadun" />
+<link rel="shortcut icon" href="/img/favicon.ico">
+<link rel="stylesheet" type="text/css" href="/css/normalize.css" />
+<link rel="stylesheet" type="text/css"
+	href="/fonts/font-awesome/css/font-awesome.css" />
+<link rel="stylesheet" type="text/css" href="/css/body.css" />
+<link rel="stylesheet" type="text/css" href="/css/card.css" />
+<link rel="stylesheet" type="text/css" href="/css/pattern.css" />
+<link rel="stylesheet" type="text/css" href="/css/footer.css" />
 
-  {% for post in site.posts limit:20 %}
-    <!-- article -->
-    <article class="article_new">
-      <h3 class="article__title" style="display: inline-block;">
-        <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-      </h3>
-      <time class="article__date" datetime="{{ post.date | date: "%Y-%m-%d" }}" style="display: inline-block; float: right;">{{ post.date | date: "%b %-d, %Y" }}</time>
-	  <p class="article__excerpt"></p>
-	  <hr>
-	  <p></p>
-      <!--<p class="article__excerpt">{{ post.excerpt | truncate: 160 }}</p>-->
-      <!--<a href="{{ post.url | prepend: site.baseurl }}" class="article__more">Read more »</a>-->
-    </article>
-    <!-- / article -->
-  {% endfor %}
+<!--[if IE]> <script type="text/javascript" src="js/vendors/html5.min.js"></script> <![endif]-->
+<script>
+	if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+		var root = document.getElementsByTagName('html')[0];
+		root.setAttribute('class', 'ff');
+	}
+</script>
+</head>
+<body class="demo-1">
+	<div class="container">
+		<header class="codrops-header">
+			<h1>
+				 <span>随笔</span>
+			</h1>
+		</header>
+		<div class="content">
+			<!-- trianglify pattern container -->
+			<div class="pattern pattern--hidden"></div>
+			<!-- cards -->
+			<div class="wrapper">
+				<div class="card" data-id="/2015/04/25/workshop">
+					<div class="card__container card__container--closed">
+						<svg class="card__image" xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 500"
+							preserveAspectRatio="xMidYMid slice"> <defs> <clipPath
+								id="/2015/04/25/workshop-clip-path"> <circle
+								class="clip" cx="960" cy="250" r="992"></circle> </clipPath> </defs> <a href="/article"><image
+								clip-path="url(#/2015/04/25/workshop-clip-path)" width="1920"
+								height="1200" xlink:href="/img/f.jpg"></image> </a></svg>
+                            <div class="card__content">
+							<i class="card__btn-close fa fa-times"></i>
+							<div class="card__caption">
+								<h2 class="card__title">网络日志(Blog)</h2>
+								<p class="card__subtitle">时光机</p>
+							</div>
+							
+						</div>								
+					</div>
+				</div>				
+				
+				<div class="card" data-id="/2015/04/24/i-scream">
+					<div class="card__container card__container--closed">
+						<svg class="card__image" xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 500"
+							preserveAspectRatio="xMidYMid slice"> <defs> <clipPath
+								id="/2015/04/24/i-scream-clip-path"> <circle
+								class="clip" cx="960" cy="250" r="992"></circle> </clipPath> </defs> <image
+								clip-path="url(#/2015/04/24/i-scream-clip-path)" width="1920"
+								height="1200" xlink:href="/img/e.jpg"></image> </svg>
+						<div class="card__content">
+							<i class="card__btn-close fa fa-times"></i>
+							<div class="card__caption">
+								<h2 class="card__title">Hobby</h2>
+								<p class="card__subtitle">My interest</p>
+							</div>
+							<div class="card__copy">
+								<div class="meta">
+									<img class="meta__avatar" src="/images/icon.jpg" /> <span
+										class="meta__author">GuoQingcun</span> <span class="meta__date">2018-05-11</span>
+								</div>		
+                                <h3 id="dolor-sit-amet">喜欢的那些事</h3>
+								<p>看电影，听音乐</p>
+								<h3 id="aliquam-suscipit">喜爱的国外电影</h3>
+								<p>
+								泰坦尼克号
+,								罗马假日
+,								诺丁山 
+,								楚门的世界
+,								肖申克的救赎
+,								忠犬八公的故事（侄女推荐）
+,								黑鹰坠落
+,								我的野蛮女友
+,								兰戈
+,								飞屋环游记
+,								辛德勒的名单
+,								勇敢的心
+,								遗愿清单
+,								驯龙高手
+,								驯龙高手2
+,								巴霍巴利王（上）
+,								末代皇帝
+,								拯救大兵瑞恩
+,								超能陆战队
+,								阿甘正传
+,								少年派的奇幻漂流
+,								阿凡达
+,								战狼2
+,								千与千寻
+,								摔跤吧！爸爸
+,								帕丁顿熊2
+,								红海行动有感.
+								</p>
+								<h3 id="aliquam-suscipit">喜爱的国内电影</h3>
+								<p>
+								  让子弹飞 Let The Bullets Fly (2010)
+								, 大话西游之月光宝盒 A Chinese Odyssey (1995)
+								, 大话西游之大圣娶亲 A Chinese Odyssey Part Two: Cinderella (1995)
+								, 倩女幽魂 A Chinese Ghost Story (1987)
+								, 东方不败（林青霞）
+								, 天若有情 A Moment of Romance (1990)
+								</p>
+								<h3 id="aliquam-suscipit">喜爱的音乐</h3>
+								<p>
+									  我们都一样Live)
+									, 有点甜《萌三国》网游主题曲《微微一笑很倾城》电视剧插曲国
+									, 礼佛药王寺
+									, 南无地藏王菩萨
+									, 我佛慈悲
+									, 菩提树下
+									, 愿做菩萨那朵莲回
+									, 菩萨座前
+									, 回忆总想哭
+									, 我们不一样
+									, 人生何处不相逢《最真的梦》粤语版
+									, 七秒钟的记忆回
+									, 情难枕
+									, 都选C《缝纫机乐队》电影推广曲
+									, 少年游
+									, Unti You
+									, Yesterday once more《生命因你动听》电影主题曲回
+									, 一次就好《夏洛特烦恼》
+									, 问情《戏说乾隆》电视剧片头曲
+									, 女儿情
+									, 沧海一声笑《笑傲江湖》
+									, 做个真的我《笑红尘》粤语版
+									, 神武女儿国
+									, 敢为天下先
+									, 花间辞 剑侠情缘三同人曲
+									, 水墨江南
+									, 清明樱花祭
+									, 逍遥叹《仙剑奇侠传》
+									, 轮回之境
+									, 芊芊
+									, 倾城一笑
+									, 你是我今天的依靠
+									, 年轮
+									, 寸缕
+									, 蜀绣
+									, 新贵妃醉酒
+									, 少年中国
+									, 乌云然
+									, 铁血丹心
+									, 庐州月
+									, 听《美人制造》
+									, 愿望《精武飞鸿》
+									, 雨花石
+									, 放了手就忘了我
+									, 我变了 我没变
+									, 怎样
+									, 中国好男儿
+									, 分手了别来打扰我
+									, 玉良缘《金玉良缘》电视剧片尾曲
+									, 月牙湾
+									, 画心《画皮》
+									, 曹操
+									, Susan说
+									, 红颜《荆轲传奇》
+									, 钗头凤
+									, 决别诗《少年杨家将》
+									, 黄种人《小鱼儿与花无缺》
+									, 霸王别姬
+									, 葬英雄
+									, 相思引《诛仙》
+									, 蝶恋花
+									, 等一分钟
+									, 老人与海
+									, 你的承诺
+									, 该死的温柔
+									, 秋天不回来
+									, 三生石 三生路
+									, 白狐
+									, 大城小爱
+									, 此生不换
+									, 向天再借五百年
+									, 千年泪
+									, 咱们屯里的人
+									, 唐宋元明清
+									, 想起 《喜气洋洋猪八戒》
+									, 一吻天荒
+									, 依然爱你
+									, when you say nothing at all
+									, 记得
+									, 梁祝
+									, 此生不换
+									, 偏爱
+									, 答应不爱你
+									, byebye
+									, 兰亭序
+									, 没有如果
+									, 不完整的旋律
+									, 日不落
+									, 传说
+									, 贞观长歌
+									, 布列瑟农
+									, the best lover
+									, 愿望
+									, 潇湘雨
 
-
-    <nav class="blocks blocks--space">
-      <div class="blocks__item">
-        {% if paginator.previous_page %}<a href="{{ paginator.previous_page_path }}">Previous</a>{% endif %}
-      </div>
-      <div class="blocks__item">
-        Page: {{ paginator.page }} of {{ paginator.total_pages }}
-      </div>
-      <div class="blocks__item">
-        {% if paginator.next_page %}<a href="{{ paginator.next_page_path }}">Next</a>{% endif %}
-      </div>
-    </nav>
+								</p>					
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="card" data-id="/2015/04/23/night-sky">
+					<div class="card__container card__container--closed">
+						<svg class="card__image" xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 500"
+							preserveAspectRatio="xMidYMid slice"> <defs> <clipPath
+								id="/2015/04/23/night-sky-clip-path"> <circle
+								class="clip" cx="960" cy="250" r="992"></circle> </clipPath> </defs> <image
+								clip-path="url(#/2015/04/23/night-sky-clip-path)" width="1920"
+								height="1200" xlink:href="/img/d.jpg"></image> </svg>
+						<div class="card__content">
+							<i class="card__btn-close fa fa-times"></i>
+							<div class="card__caption">
+								<h2 class="card__title">About Me</h2>
+								<p class="card__subtitle">IT developer focusing on web technology</p>
+							</div>
+							<div class="card__copy">
+								<div class="meta">
+									<img class="meta__avatar" src="/images/icon.jpg" /> <span
+										class="meta__author">GuoQingcun</span> <span class="meta__date">2018-05-11</span>
+								</div>
+								<h3 id="dolor-sit-amet">Intro</h3>
+								<p>My name is Qingcun Guo(郭清存). You can call me Grace. I was born in 1985s.
+                                   I am an IT developer focusing on web technology. Now I am employed by 24xiaomai.com as an java engineer. 
+                                   In spare time, I like reading book, surfing internet, watching movie. </p>
+								<h3 id="aliquam-suscipit">So On.</h3>
+								<p>
+									<div align="center">
+										<img src="/images/aboutme/me.jpg">  
+									</div>
+								</p>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<!-- /container -->
+	</div>
+	<footer class="footer">
+	<div class="col">
+		© 2014-2016 随笔 | 本站总访问量<span id="busuanzi_value_site_pv"></span>次
+	</div>
+	<div class="col">
+		本站访客数<span id="busuanzi_value_site_uv"></span>人次
+	</div>
+</footer>
+	<!-- JS -->
+	<script src="/js/vendors/trianglify.min.js"></script>
+	<script src="/js/vendors/TweenMax.min.js"></script>
+	<script src="/js/vendors/ScrollToPlugin.min.js"></script>
+	<script src="/js/vendors/cash.min.js"></script>
+	<script src="/js/Card-circle.js"></script>
+	<script src="/js/modern-blog.js"></script>
+	<!--访问量统计js-->
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</body>
+</html>

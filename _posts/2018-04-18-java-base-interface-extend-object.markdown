@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: article-detail
 title:  "interface是否继承自Object对象"
 date:   2018-04-28 17:00:17 +0800
 categories: Java

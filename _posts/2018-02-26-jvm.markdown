@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: article-detail
 title:  "JVM调优"
 date:   2018-02-26 17:30:17 +0800
 categories: jvm

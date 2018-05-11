@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: article-detail
 title:  "组织结构的三种类型"
 date:   2018-04-18 14:00:17 +0800
 categories: 公司

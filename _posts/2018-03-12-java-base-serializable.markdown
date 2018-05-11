@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: article-detail
 title:  "Java 对象序列化"
 date:   2018-03-13 13:43:17 +0800
 categories: Java
