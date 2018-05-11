@@ -1,7 +1,7 @@
 # Site configuration
 name: 郭清存随笔
 
-domain: "http://songroger.win"
+domain: "https://guoqingcun.github.io"
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://guoqingcun.github.io/" 
 # 分页
