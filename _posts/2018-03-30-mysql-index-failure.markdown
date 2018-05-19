@@ -1,6 +1,7 @@
 ---
 layout: article-detail
 title:  "一次排查MYSQL索引失效的过程"
+author: "郭清存"
 date:   2018-03-30 10:16:17 +0800
 categories: 数据库
 location: 

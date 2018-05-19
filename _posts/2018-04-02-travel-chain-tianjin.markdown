@@ -1,6 +1,7 @@
 ---
 layout: article-detail
 title:  "天津之行"
+author: "郭清存"
 date:   2018-04-02 16:12:17 +0800
 categories: 喜好
 location: 

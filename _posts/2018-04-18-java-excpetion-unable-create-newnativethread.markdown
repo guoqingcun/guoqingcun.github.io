@@ -1,6 +1,7 @@
 ---
 layout: article-detail
 title:  "记一次OOM：unable to create new native thread"
+author: "郭清存"
 date:   2018-05-10 00:24:17 +0800
 categories: java
 location: 
@@ -13,8 +14,8 @@ description: "OOM unable to create new native thread"
 
 VirtualMachineError是在Java虚拟机损坏或所需资源耗尽时抛出。而抛出的error具体类包括如下四种
 >
-- InternalError:底层主机系统软件有利故障或硬件错误
-- OutOfMemoryError:Java虚拟机耗尽虚拟内存或物理且GC不能回收足够的空间时的错误
+- InternalError:底层主机系统软件有故障或硬件错误
+- OutOfMemoryError:Java虚拟机耗尽虚拟或物理内存且GC不能回收足够的空间时的错误
 - StackOverflowError:Java虚拟机耗尽了线程的堆栈空间，通常是由于程序执行无数次递归调用所至。
 - UnknowError:发生异常或错误，但Java虚拟机无法得知实际的异常或错误。
 

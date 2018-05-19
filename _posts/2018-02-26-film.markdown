@@ -1,6 +1,7 @@
 ---
 layout: article-detail
 title:  "喜欢的那些事"
+author: "郭清存"
 date:   2018-03-06 17:30:17 +0800
 categories: 喜好
 location: 
